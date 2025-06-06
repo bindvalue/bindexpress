@@ -6,7 +6,7 @@
 // Configuração da API do n8n
 const N8N_CONFIG = {
     // URL base da API do n8n (deve ser substituída pela URL real do seu webhook n8n)
-    baseUrl: 'https://seu-servidor-n8n.com/webhook/',
+    baseUrl: 'https://n8n.bindvalue.com.br/webhook/',
     
     // Endpoints
     endpoints: {
