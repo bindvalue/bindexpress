@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PizzaExpress - Faça seu pedido online</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>Bind<span>Express</span></h1>
+                </a>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#promocoes">Promoções</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="carrinho">
+                <a href="#" id="btn-carrinho">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="contador">0</span>
+                </a>
+            </div>
+            <div class="menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Principal -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <h2>As melhores pizzas da cidade</h2>
+                <p>Peça agora e receba em até 40 minutos!</p>
+                <a href="#cardapio" class="btn-primary">Ver Cardápio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorias -->
+    <section class="categorias">
+        <div class="container">
+            <h2 class="section-title">Categorias</h2>
+            <div class="categorias-grid">
+                <div class="categoria-item">
+                    <img src="img/pizza-tradicional.jpg" alt="Pizzas Tradicionais">
+                    <h3>Tradicionais</h3>
+                </div>
+                <div class="categoria-item">
+                    <img src="img/pizza-premium.jpg" alt="Pizzas Premium">
+                    <h3>Premium</h3>
+                </div>
+                <div class="categoria-item">
+                    <img src="img/pizza-doce.jpg" alt="Pizzas Doces">
+                    <h3>Doces</h3>
+                </div>
+                <div class="categoria-item">
+                    <img src="img/bebidas.jpg" alt="Bebidas">
+                    <h3>Bebidas</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cardápio -->
+    <section id="cardapio" class="cardapio">
+        <div class="container">
+            <h2 class="section-title">Nosso Cardápio</h2>
+            
+            <div class="filtros">
+                <button class="filtro-btn active" data-filter="todos">Todos</button>
+                <button class="filtro-btn" data-filter="tradicionais">Tradicionais</button>
+                <button class="filtro-btn" data-filter="premium">Premium</button>
+                <button class="filtro-btn" data-filter="doces">Doces</button>
+                <button class="filtro-btn" data-filter="bebidas">Bebidas</button>
+            </div>
+            
+            <div class="produtos-grid">
+                <!-- Os produtos serão carregados dinamicamente via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promoções -->
+    <section id="promocoes" class="promocoes">
+        <div class="container">
+            <h2 class="section-title">Promoções</h2>
+            <div class="promocoes-grid">
+                <div class="promocao-item">
+                    <div class="promocao-img">
+                        <img src="img/promo-1.jpg" alt="Promoção Combo Família">
+                        <span class="desconto">-20%</span>
+                    </div>
+                    <div class="promocao-info">
+                        <h3>Combo Família</h3>
+                        <p>1 Pizza Grande + 1 Pizza Média + Refrigerante 2L</p>
+                        <div class="preco">
+                            <span class="preco-antigo">R$ 120,00</span>
+                            <span class="preco-atual">R$ 96,00</span>
+                        </div>
+                        <button class="btn-adicionar">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+                <div class="promocao-item">
+                    <div class="promocao-img">
+                        <img src="img/promo-2.jpg" alt="Promoção Combo Casal">
+                        <span class="desconto">-15%</span>
+                    </div>
+                    <div class="promocao-info">
+                        <h3>Combo Casal</h3>
+                        <p>1 Pizza Média + 2 Refrigerantes Lata</p>
+                        <div class="preco">
+                            <span class="preco-antigo">R$ 75,00</span>
+                            <span class="preco-atual">R$ 63,75</span>
+                        </div>
+                        <button class="btn-adicionar">Adicionar ao Carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="sobre-content">
+                <div class="sobre-img">
+                    <img src="img/pizzaria.jpg" alt="Nossa Pizzaria">
+                </div>
+                <div class="sobre-texto">
+                    <h3>PizzaExpress - Tradição em sabor</h3>
+                    <p>Desde 2010 servindo as melhores pizzas da cidade. Nossos ingredientes são selecionados e sempre frescos para garantir o melhor sabor em cada fatia.</p>
+                    <p>Nossa massa é preparada diariamente e fermentada por 24 horas, garantindo uma textura perfeita e sabor inigualável.</p>
+                    <p>Venha nos visitar ou peça online e desfrute da melhor experiência em pizzas!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2 class="section-title">Contato</h2>
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Rua das Pizzas, 123 - Centro</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>(11) 99999-9999</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>contato@pizzaexpress.com.br</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <p>Seg - Dom: 18:00 - 23:00</p>
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <form id="form-contato">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Pizza<span>Express</span></h2>
+                    <p>As melhores pizzas da cidade!</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#cardapio">Cardápio</a></li>
+                        <li><a href="#promocoes">Promoções</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><a href="https://www.bindvalue.dev">&copy; 2025 BindValue.dev</a> - Todos os direitos reservados.</p>
+                <p><a href="admin/login.html">Área Administrativa</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal do Carrinho -->
+    <div class="modal" id="modal-carrinho">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Seu Carrinho</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="carrinho-itens">
+                    <!-- Os itens do carrinho serão carregados dinamicamente via JavaScript -->
+                </div>
+                <div class="carrinho-total">
+                    <p>Total: <span id="carrinho-total">R$ 0,00</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="btn-limpar-carrinho">Limpar Carrinho</button>
+                <button class="btn-primary" id="btn-finalizar-pedido">Finalizar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Produto -->
+    <div class="modal" id="modal-produto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="produto-titulo"></h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="produto-detalhes">
+                    <div class="produto-img">
+                        <img id="produto-img" src="" alt="">
+                    </div>
+                    <div class="produto-info">
+                        <p id="produto-descricao"></p>
+                        <div class="produto-opcoes">
+                            <h4>Tamanho</h4>
+                            <div class="opcoes-tamanho">
+                                <label>
+                                    <input type="radio" name="tamanho" value="pequena" checked>
+                                    <span>Pequena</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="tamanho" value="media">
+                                    <span>Média</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="tamanho" value="grande">
+                                    <span>Grande</span>
+                                </label>
+                            </div>
+                            
+                            <h4>Adicionais</h4>
+                            <div class="opcoes-adicionais">
+                                <label>
+                                    <input type="checkbox" name="adicional" value="borda-recheada">
+                                    <span>Borda Recheada (+R$ 8,00)</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="adicional" value="extra-queijo">
+                                    <span>Extra Queijo (+R$ 5,00)</span>
+                                </label>
+                            </div>
+                            
+                            <div class="produto-quantidade">
+                                <h4>Quantidade</h4>
+                                <div class="quantidade-controle">
+                                    <button id="btn-diminuir">-</button>
+                                    <input type="number" id="quantidade" value="1" min="1" max="10">
+                                    <button id="btn-aumentar">+</button>
+                                </div>
+                            </div>
+                            
+                            <div class="produto-preco">
+                                <h4>Preço</h4>
+                                <p id="produto-preco">R$ 0,00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="btn-adicionar-carrinho">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Finalização de Pedido -->
+    <div class="modal" id="modal-finalizar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Finalizar Pedido</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-pedido">
+                    <div class="form-group">
+                        <label for="cliente-nome">Nome Completo</label>
+                        <input type="text" id="cliente-nome" name="cliente-nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-telefone">Telefone</label>
+                        <input type="tel" id="cliente-telefone" name="cliente-telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-endereco">Endereço de Entrega</label>
+                        <input type="text" id="cliente-endereco" name="cliente-endereco" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-complemento">Complemento</label>
+                        <input type="text" id="cliente-complemento" name="cliente-complemento">
+                    </div>
+                    <div class="form-group">
+                        <label for="forma-pagamento">Forma de Pagamento</label>
+                        <select id="forma-pagamento" name="forma-pagamento" required>
+                            <option value="">Selecione</option>
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="cartao">Cartão na Entrega</option>
+                            <option value="pix">PIX</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="troco-group" style="display: none;">
+                        <label for="troco">Troco para</label>
+                        <input type="number" id="troco" name="troco" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="observacoes">Observações</label>
+                        <textarea id="observacoes" name="observacoes"></textarea>
+                    </div>
+                </form>
+                <div class="resumo-pedido">
+                    <h4>Resumo do Pedido</h4>
+                    <div class="resumo-itens">
+                        <!-- Os itens do resumo serão carregados dinamicamente via JavaScript -->
+                    </div>
+                    <div class="resumo-valores">
+                        <p>Subtotal: <span id="resumo-subtotal">R$ 0,00</span></p>
+                        <p>Taxa de Entrega: <span id="resumo-taxa">R$ 5,00</span></p>
+                        <p class="total">Total: <span id="resumo-total">R$ 0,00</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="btn-voltar-carrinho">Voltar ao Carrinho</button>
+                <button class="btn-primary" id="btn-confirmar-pedido">Confirmar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação -->
+    <div class="modal" id="modal-confirmacao">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Pedido Confirmado!</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="confirmacao-content">
+                    <i class="fas fa-check-circle"></i>
+                    <h4>Seu pedido foi realizado com sucesso!</h4>
+                    <p>Número do pedido: <span id="pedido-numero"></span></p>
+                    <p>Tempo estimado de entrega: 40-50 minutos</p>
+                    <p>Acompanhe o status do seu pedido pelo WhatsApp.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="btn-fechar-confirmacao">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/produtos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
