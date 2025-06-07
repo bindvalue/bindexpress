@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li class="active"><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar configurações...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações Page -->
+            <div class="configuracoes-page">
+                <div class="page-header">
+                    <h1 class="page-title">Configurações do Sistema</h1>
+                    <div class="page-actions">
+                        <button class="btn-secondary" id="btn-backup-config">
+                            <i class="fas fa-download"></i> Backup Configurações
+                        </button>
+                        <button class="btn-primary" id="btn-salvar-config">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Abas de Configuração -->
+                <div class="config-tabs">
+                    <button class="tab-btn active" data-tab="geral">
+                        <i class="fas fa-cog"></i> Geral
+                    </button>
+                    <button class="tab-btn" data-tab="n8n">
+                        <i class="fas fa-robot"></i> Integração n8n
+                    </button>
+                    <button class="tab-btn" data-tab="pagamento">
+                        <i class="fas fa-credit-card"></i> Pagamentos
+                    </button>
+                    <button class="tab-btn" data-tab="entrega">
+                        <i class="fas fa-truck"></i> Entrega
+                    </button>
+                    <button class="tab-btn" data-tab="notificacoes">
+                        <i class="fas fa-bell"></i> Notificações
+                    </button>
+                    <button class="tab-btn" data-tab="seguranca">
+                        <i class="fas fa-shield-alt"></i> Segurança
+                    </button>
+                </div>
+
+                <!-- Conteúdo das Abas -->
+                <div class="config-content">
+                    
+                    <!-- Aba Geral -->
+                    <div class="tab-content active" id="tab-geral">
+                        <div class="config-section">
+                            <h3>Informações da Empresa</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="empresa-nome">Nome da Empresa</label>
+                                    <input type="text" id="empresa-nome" value="BindExpress Pizzaria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa-cnpj">CNPJ</label>
+                                    <input type="text" id="empresa-cnpj" value="12.345.678/0001-90">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="empresa-telefone">Telefone</label>
+                                    <input type="tel" id="empresa-telefone" value="(11) 3456-7890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa-email">Email</label>
+                                    <input type="email" id="empresa-email" value="contato@bindexpress.com.br">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa-endereco">Endereço Completo</label>
+                                <textarea id="empresa-endereco" rows="3">Rua das Pizzas, 123 - Centro - São Paulo - SP - CEP: 01234-567</textarea>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações de Funcionamento</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="horario-abertura">Horário de Abertura</label>
+                                    <input type="time" id="horario-abertura" value="18:00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="horario-fechamento">Horário de Fechamento</label>
+                                    <input type="time" id="horario-fechamento" value="23:30">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Dias de Funcionamento</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="segunda" checked>
+                                        <span>Segunda-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="terca" checked>
+                                        <span>Terça-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="quarta" checked>
+                                        <span>Quarta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="quinta" checked>
+                                        <span>Quinta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="sexta" checked>
+                                        <span>Sexta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="sabado" checked>
+                                        <span>Sábado</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="domingo" checked>
+                                        <span>Domingo</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações do Site</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="site-titulo">Título do Site</label>
+                                    <input type="text" id="site-titulo" value="BindExpress - A Melhor Pizza da Cidade">
+                                </div>
+                                <div class="form-group">
+                                    <label for="site-descricao">Descrição</label>
+                                    <input type="text" id="site-descricao" value="Pizzas artesanais com ingredientes frescos e entrega rápida">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="site-logo">Logo da Empresa</label>
+                                <div class="file-upload">
+                                    <input type="file" id="site-logo" accept="image/*">
+                                    <div class="file-upload-preview">
+                                        <img id="preview-logo" src="img/logo.png" alt="Logo atual">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Integração n8n -->
+                    <div class="tab-content" id="tab-n8n">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <h3>Configuração do n8n</h3>
+                                <div class="connection-status" id="n8n-status">
+                                    <span class="status-indicator offline"></span>
+                                    <span class="status-text">Desconectado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="n8n-url">URL Base do n8n</label>
+                                <input type="url" id="n8n-url" placeholder="https://n8n.bindvalue.com.br" value="https://n8n.bindvalue.com.br">
+                                <small>URL base da sua instância do n8n</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="n8n-api-key">Chave de API (Opcional)</label>
+                                <div class="input-with-button">
+                                    <input type="password" id="n8n-api-key" placeholder="Chave de API do n8n">
+                                    <button type="button" class="btn-toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <small>Deixe em branco se não usar autenticação por API key</small>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="n8n-timeout">Timeout (segundos)</label>
+                                    <input type="number" id="n8n-timeout" value="30" min="5" max="300">
+                                </div>
+                                <div class="form-group">
+                                    <label for="n8n-retry">Tentativas de Retry</label>
+                                    <input type="number" id="n8n-retry" value="3" min="0" max="10">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="n8n-debug" checked>
+                                        <span>Modo Debug (logs detalhados)</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="n8n-offline-queue" checked>
+                                        <span>Fila Offline (armazena requisições quando offline)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="btn-primary" id="btn-testar-conexao">
+                                    <i class="fas fa-plug"></i> Testar Conexão
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Webhooks do n8n</h3>
+                            <p class="section-description">Configure os endpoints dos webhooks para cada tipo de evento</p>
+                            
+                            <div class="webhook-config">
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Novos Pedidos</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-pedidos" checked>
+                                            <label for="webhook-pedidos"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-pedidos-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-pedidos-url" value="https://n8n.bindvalue.com.br/webhook/novo-pedido">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="pedidos">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="pedidos">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Atualização de Status</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-status" checked>
+                                            <label for="webhook-status"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-status-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-status-url" value="https://n8n.bindvalue.com.br/webhook/atualizar-status">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="status">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="status">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Autenticação</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-auth" checked>
+                                            <label for="webhook-auth"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-auth-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-auth-url" value="https://n8n.bindvalue.com.br/webhook/autenticar">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="auth">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="auth">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Obter Pedidos</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-listar" checked>
+                                            <label for="webhook-listar"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-listar-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-listar-url" value="https://n8n.bindvalue.com.br/webhook/obter-pedidos">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="listar">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="listar">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Contato/Suporte</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-contato" checked>
+                                            <label for="webhook-contato"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-contato-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-contato-url" value="https://n8n.bindvalue.com.br/webhook/contato">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="contato">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="contato">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Monitoramento e Logs</h3>
+                            <div class="monitoring-stats">
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Requisições Hoje</h4>
+                                        <div class="stat-value" id="requisicoes-hoje">0</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Taxa de Sucesso</h4>
+                                        <div class="stat-value" id="taxa-sucesso">100%</div>
+                                    </div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="stat-info">
+                                        <h4>Fila Offline</h4>
+                                        <div class="stat-value" id="fila-offline">0 itens</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="logs-section">
+                                <div class="logs-header">
+                                    <h4>Logs de Atividade</h4>
+                                    <div class="logs-actions">
+                                        <button type="button" class="btn-secondary" id="btn-limpar-logs">
+                                            <i class="fas fa-trash"></i> Limpar
+                                        </button>
+                                        <button type="button" class="btn-secondary" id="btn-exportar-logs">
+                                            <i class="fas fa-download"></i> Exportar
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="logs-container" id="logs-container">
+                                    <!-- Logs serão inseridos aqui via JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Pagamentos -->
+                    <div class="tab-content" id="tab-pagamento">
+                        <div class="config-section">
+                            <h3>Métodos de Pagamento</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <div class="method-info">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <h4>Dinheiro</h4>
+                                        </div>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="payment-dinheiro" checked>
+                                            <label for="payment-dinheiro"></label>
+                                        </div>
+                                    </div>
+                                    <div class="method-config">
+                                        <div class="form-group">
+                                            <label for="dinheiro-troco">Aceitar Troco</label>
+                                            <select id="dinheiro-troco">
+                                                <option value="sim">Sim</option>
+                                                <option value="nao">Não</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="dinheiro-limite">Limite de Troco (R$)</label>
+                                            <input type="number" id="dinheiro-limite" value="100" step="0.01">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <div class="method-info">
+                                            <i class="fas fa-credit-card"></i>
+                                            <h4>Cartão de Crédito/Débito</h4>
+                                        </div>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="payment-cartao" checked>
+                                            <label for="payment-cartao"></label>
+                                        </div>
+                                    </div>
+                                    <div class="method-config">
+                                        <div class="form-group">
+                                            <label for="cartao-maquina">Aceitar na Entrega</label>
+                                            <select id="cartao-maquina">
+                                                <option value="sim">Sim</option>
+                                                <option value="nao">Não</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cartao-online">Pagamento Online</label>
+                                            <select id="cartao-online">
+                                                <option value="sim">Sim</option>
+                                                <option value="nao">Não</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <div class="method-info">
+                                            <i class="fab fa-pix"></i>
+                                            <h4>PIX</h4>
+                                        </div>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="payment-pix" checked>
+                                            <label for="payment-pix"></label>
+                                        </div>
+                                    </div>
+                                    <div class="method-config">
+                                        <div class="form-group">
+                                            <label for="pix-chave">Chave PIX</label>
+                                            <input type="text" id="pix-chave" value="contato@bindexpress.com.br">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pix-qrcode">QR Code PIX</label>
+                                            <div class="file-upload">
+                                                <input type="file" id="pix-qrcode" accept="image/*">
+                                                <div class="file-upload-preview">
+                                                    <img id="preview-qrcode" src="img/qrcode-pix.png" alt="QR Code PIX">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Integração Stripe</h3>
+                            <div class="stripe-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="stripe-enabled">
+                                            <span>Habilitar Stripe</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="stripe-settings" id="stripe-settings" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="stripe-mode">Modo</label>
+                                        <select id="stripe-mode">
+                                            <option value="test">Teste (Sandbox)</option>
+                                            <option value="live">Produção (Live)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="stripe-public-key">Chave Pública (Publishable Key)</label>
+                                        <input type="text" id="stripe-public-key" placeholder="pk_test_...">
+                                        <small>Chave pública do Stripe para o frontend</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="stripe-secret-key">Chave Secreta (Secret Key)</label>
+                                        <div class="input-with-button">
+                                            <input type="password" id="stripe-secret-key" placeholder="sk_test_...">
+                                            <button type="button" class="btn-toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <small>Chave secreta do Stripe (nunca compartilhe)</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="stripe-webhook-secret">Webhook Secret</label>
+                                        <div class="input-with-button">
+                                            <input type="password" id="stripe-webhook-secret" placeholder="whsec_...">
+                                            <button type="button" class="btn-toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                        <small>Secret para validar webhooks do Stripe</small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="stripe-currency">Moeda</label>
+                                        <select id="stripe-currency">
+                                            <option value="brl">Real Brasileiro (BRL)</option>
+                                            <option value="usd">Dólar Americano (USD)</option>
+                                            <option value="eur">Euro (EUR)</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="stripe-capture-auto" checked>
+                                                <span>Captura Automática</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="stripe-save-cards">
+                                                <span>Salvar Cartões dos Clientes</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn-primary" id="btn-testar-stripe">
+                                            <i class="fas fa-credit-card"></i> Testar Conexão Stripe
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações Gerais de Pagamento</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="valor-minimo">Valor Mínimo do Pedido (R$)</label>
+                                    <input type="number" id="valor-minimo" value="25.00" step="0.01">
+                                </div>
+                                <div class="form-group">
+                                    <label for="taxa-entrega">Taxa de Entrega (R$)</label>
+                                    <input type="number" id="taxa-entrega" value="5.00" step="0.01">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="entrega-gratis" checked>
+                                        <span>Entrega grátis acima de R$ 50,00</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Entrega -->
+                    <div class="tab-content" id="tab-entrega">
+                        <div class="config-section">
+                            <h3>Configurações de Entrega</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="tempo-preparo">Tempo de Preparo (minutos)</label>
+                                    <input type="number" id="tempo-preparo" value="30" min="10" max="120">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tempo-entrega">Tempo de Entrega (minutos)</label>
+                                    <input type="number" id="tempo-entrega" value="45" min="15" max="180">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="raio-entrega">Raio de Entrega (km)</label>
+                                    <input type="number" id="raio-entrega" value="10" min="1" max="50" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label for="taxa-entrega-base">Taxa Base de Entrega (R$)</label>
+                                    <input type="number" id="taxa-entrega-base" value="5.00" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Áreas de Entrega</h3>
+                            <div class="delivery-areas">
+                                <div class="area-item">
+                                    <div class="area-header">
+                                        <h4>Centro</h4>
+                                        <div class="area-actions">
+                                            <button type="button" class="btn-secondary btn-edit-area">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn-secondary btn-delete-area">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="area-info">
+                                        <p><strong>CEPs:</strong> 01000-000 a 01999-999</p>
+                                        <p><strong>Taxa:</strong> R$ 5,00</p>
+                                        <p><strong>Tempo:</strong> 30-45 min</p>
+                                    </div>
+                                </div>
+
+                                <div class="area-item">
+                                    <div class="area-header">
+                                        <h4>Zona Norte</h4>
+                                        <div class="area-actions">
+                                            <button type="button" class="btn-secondary btn-edit-area">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn-secondary btn-delete-area">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="area-info">
+                                        <p><strong>CEPs:</strong> 02000-000 a 02999-999</p>
+                                        <p><strong>Taxa:</strong> R$ 7,00</p>
+                                        <p><strong>Tempo:</strong> 45-60 min</p>
+                                    </div>
+                                </div>
+
+                                <div class="area-item">
+                                    <div class="area-header">
+                                        <h4>Zona Sul</h4>
+                                        <div class="area-actions">
+                                            <button type="button" class="btn-secondary btn-edit-area">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button type="button" class="btn-secondary btn-delete-area">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="area-info">
+                                        <p><strong>CEPs:</strong> 04000-000 a 04999-999</p>
+                                        <p><strong>Taxa:</strong> R$ 8,00</p>
+                                        <p><strong>Tempo:</strong> 50-70 min</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn-primary" id="btn-add-area">
+                                <i class="fas fa-plus"></i> Adicionar Área
+                            </button>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações Avançadas</h3>
+                            <div class="form-group">
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="entrega-agendada" checked>
+                                        <span>Permitir Entrega Agendada</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="retirada-balcao" checked>
+                                        <span>Permitir Retirada no Balcão</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="tracking-entrega">
+                                        <span>Rastreamento de Entrega</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="mensagem-entrega">Mensagem para o Entregador</label>
+                                <textarea id="mensagem-entrega" rows="3" placeholder="Instruções especiais para os entregadores..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Notificações -->
+                    <div class="tab-content" id="tab-notificacoes">
+                        <div class="config-section">
+                            <h3>Notificações WhatsApp</h3>
+                            <div class="whatsapp-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="whatsapp-enabled" checked>
+                                            <span>Habilitar WhatsApp</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="whatsapp-settings" id="whatsapp-settings">
+                                    <div class="form-group">
+                                        <label for="whatsapp-api">API do WhatsApp</label>
+                                        <select id="whatsapp-api">
+                                            <option value="twilio">Twilio</option>
+                                            <option value="whatsapp-business">WhatsApp Business API</option>
+                                            <option value="zapier">Zapier</option>
+                                            <option value="custom">Personalizada</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="whatsapp-token">Token da API</label>
+                                        <div class="input-with-button">
+                                            <input type="password" id="whatsapp-token" placeholder="Token da API do WhatsApp">
+                                            <button type="button" class="btn-toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="whatsapp-numero">Número do WhatsApp</label>
+                                        <input type="tel" id="whatsapp-numero" value="+5511987654321" placeholder="+5511987654321">
+                                    </div>
+
+                                    <div class="notification-types">
+                                        <h4>Tipos de Notificação</h4>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="whatsapp-novo-pedido" checked>
+                                                <span>Novo Pedido</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="whatsapp-status-pedido" checked>
+                                                <span>Atualização de Status</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="whatsapp-pedido-pronto" checked>
+                                                <span>Pedido Pronto</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="whatsapp-saiu-entrega" checked>
+                                                <span>Saiu para Entrega</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="whatsapp-entregue" checked>
+                                                <span>Pedido Entregue</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn-primary" id="btn-testar-whatsapp">
+                                            <i class="fab fa-whatsapp"></i> Testar WhatsApp
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Notificações por Email</h3>
+                            <div class="email-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="email-enabled" checked>
+                                            <span>Habilitar Email</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="email-settings" id="email-settings">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="smtp-host">Servidor SMTP</label>
+                                            <input type="text" id="smtp-host" value="smtp.gmail.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="smtp-port">Porta</label>
+                                            <input type="number" id="smtp-port" value="587">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="smtp-user">Usuário</label>
+                                            <input type="email" id="smtp-user" value="contato@bindexpress.com.br">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="smtp-password">Senha</label>
+                                            <div class="input-with-button">
+                                                <input type="password" id="smtp-password" placeholder="Senha do email">
+                                                <button type="button" class="btn-toggle-password">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="smtp-ssl" checked>
+                                                <span>Usar SSL/TLS</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-types">
+                                        <h4>Tipos de Notificação</h4>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="email-novo-pedido" checked>
+                                                <span>Novo Pedido (Admin)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="email-confirmacao" checked>
+                                                <span>Confirmação de Pedido (Cliente)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="email-status" checked>
+                                                <span>Atualização de Status (Cliente)</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="email-promocoes">
+                                                <span>Promoções e Ofertas</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn-primary" id="btn-testar-email">
+                                            <i class="fas fa-envelope"></i> Testar Email
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Notificações Push</h3>
+                            <div class="push-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="push-enabled">
+                                            <span>Habilitar Notificações Push</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="push-settings" id="push-settings" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="firebase-key">Chave do Firebase</label>
+                                        <div class="input-with-button">
+                                            <input type="password" id="firebase-key" placeholder="Chave do Firebase Cloud Messaging">
+                                            <button type="button" class="btn-toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="notification-types">
+                                        <h4>Tipos de Notificação</h4>
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="push-novo-pedido" checked>
+                                                <span>Novo Pedido</span>
+                                            </label>
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="push-promocoes">
+                                                <span>Promoções</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Segurança -->
+                    <div class="tab-content" id="tab-seguranca">
+                        <div class="config-section">
+                            <h3>Autenticação e Senhas</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="senha-min-length">Tamanho Mínimo da Senha</label>
+                                    <input type="number" id="senha-min-length" value="8" min="6" max="20">
+                                </div>
+                                <div class="form-group">
+                                    <label for="senha-expiracao">Expiração da Senha (dias)</label>
+                                    <input type="number" id="senha-expiracao" value="90" min="30" max="365">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Requisitos de Senha</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="senha-maiuscula" checked>
+                                        <span>Pelo menos uma letra maiúscula</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="senha-minuscula" checked>
+                                        <span>Pelo menos uma letra minúscula</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="senha-numero" checked>
+                                        <span>Pelo menos um número</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="senha-especial" checked>
+                                        <span>Pelo menos um caractere especial</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tentativas-login">Máximo de Tentativas de Login</label>
+                                <input type="number" id="tentativas-login" value="5" min="3" max="10">
+                                <small>Após este número, a conta será bloqueada temporariamente</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="bloqueio-tempo">Tempo de Bloqueio (minutos)</label>
+                                <input type="number" id="bloqueio-tempo" value="15" min="5" max="60">
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Autenticação de Dois Fatores (2FA)</h3>
+                            <div class="two-factor-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="two-factor-enabled">
+                                            <span>Habilitar 2FA</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="two-factor-settings" id="two-factor-settings" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="two-factor-method">Método de 2FA</label>
+                                        <select id="two-factor-method">
+                                            <option value="sms">SMS</option>
+                                            <option value="email">Email</option>
+                                            <option value="app">App Autenticador</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="checkbox-group">
+                                            <label class="checkbox-label">
+                                                <input type="checkbox" id="two-factor-required">
+                                                <span>Obrigatório para todos os usuários</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Reset de Senha</h3>
+                            <div class="password-reset-config">
+                                <div class="form-group">
+                                    <label for="reset-token-expiry">Validade do Token de Reset (horas)</label>
+                                    <input type="number" id="reset-token-expiry" value="24" min="1" max="72">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="reset-email-enabled" checked>
+                                            <span>Permitir reset por email</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="reset-sms-enabled">
+                                            <span>Permitir reset por SMS</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="reset-template">Template do Email de Reset</label>
+                                    <textarea id="reset-template" rows="5" placeholder="Template personalizado para o email de reset de senha...">Olá {nome},
+
+Recebemos uma solicitação para redefinir sua senha. Clique no link abaixo para criar uma nova senha:
+
+{link_reset}
+
+Este link expira em {tempo_expiracao} horas.
+
+Se você não solicitou esta alteração, ignore este email.
+
+Atenciosamente,
+Equipe BindExpress</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Logs de Segurança</h3>
+                            <div class="security-logs">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="log-logins" checked>
+                                            <span>Registrar tentativas de login</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="log-password-changes" checked>
+                                            <span>Registrar alterações de senha</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="log-admin-actions" checked>
+                                            <span>Registrar ações administrativas</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="log-retention">Retenção de Logs (dias)</label>
+                                    <input type="number" id="log-retention" value="90" min="30" max="365">
+                                </div>
+
+                                <div class="security-actions">
+                                    <button type="button" class="btn-secondary" id="btn-export-security-logs">
+                                        <i class="fas fa-download"></i> Exportar Logs
+                                    </button>
+                                    <button type="button" class="btn-secondary" id="btn-clear-security-logs">
+                                        <i class="fas fa-trash"></i> Limpar Logs
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Backup e Recuperação</h3>
+                            <div class="backup-config">
+                                <div class="form-group">
+                                    <div class="checkbox-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="backup-auto" checked>
+                                            <span>Backup Automático</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="backup-settings" id="backup-settings">
+                                    <div class="form-group">
+                                        <label for="backup-frequency">Frequência do Backup</label>
+                                        <select id="backup-frequency">
+                                            <option value="daily">Diário</option>
+                                            <option value="weekly">Semanal</option>
+                                            <option value="monthly">Mensal</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="backup-retention">Retenção de Backups (dias)</label>
+                                        <input type="number" id="backup-retention" value="30" min="7" max="365">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="backup-location">Local do Backup</label>
+                                        <select id="backup-location">
+                                            <option value="local">Local</option>
+                                            <option value="cloud">Nuvem</option>
+                                            <option value="both">Ambos</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="backup-actions">
+                                    <button type="button" class="btn-primary" id="btn-backup-now">
+                                        <i class="fas fa-save"></i> Fazer Backup Agora
+                                    </button>
+                                    <button type="button" class="btn-secondary" id="btn-restore-backup">
+                                        <i class="fas fa-upload"></i> Restaurar Backup
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Adicionar Área de Entrega -->
+    <div class="modal" id="modal-add-area">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Adicionar Área de Entrega</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-add-area">
+                    <div class="form-group">
+                        <label for="area-nome">Nome da Área</label>
+                        <input type="text" id="area-nome" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="area-cep-inicio">CEP Inicial</label>
+                            <input type="text" id="area-cep-inicio" placeholder="00000-000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="area-cep-fim">CEP Final</label>
+                            <input type="text" id="area-cep-fim" placeholder="99999-999" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="area-taxa">Taxa de Entrega (R$)</label>
+                            <input type="number" id="area-taxa" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="area-tempo">Tempo de Entrega (min)</label>
+                            <input type="text" id="area-tempo" placeholder="30-45" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary close">Cancelar</button>
+                <button type="submit" form="form-add-area" class="btn-primary">Adicionar Área</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/admin.js"></script>
+    <script src="../js/configuracoes.js"></script>
+</body>
+</html>
+

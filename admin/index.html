@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active"><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard -->
+            <div class="dashboard">
+                <h1 class="page-title">Dashboard</h1>
+
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total de Pedidos</h3>
+                            <div class="stat-value">125</div>
+                            <div class="stat-change positive">
+                                <span>+15%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Receita Total</h3>
+                            <div class="stat-value">R$ 8.250,00</div>
+                            <div class="stat-change positive">
+                                <span>+12%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Novos Clientes</h3>
+                            <div class="stat-value">45</div>
+                            <div class="stat-change positive">
+                                <span>+8%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-pizza-slice"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pizzas Vendidas</h3>
+                            <div class="stat-value">210</div>
+                            <div class="stat-change positive">
+                                <span>+20%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Vendas da Semana</h3>
+                            <div class="chart-actions">
+                                <button class="btn-chart-filter active">Dia</button>
+                                <button class="btn-chart-filter">Semana</button>
+                                <button class="btn-chart-filter">Mês</button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="vendasChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Produtos Mais Vendidos</h3>
+                            <div class="chart-actions">
+                                <button class="btn-chart-filter active">Top 5</button>
+                                <button class="btn-chart-filter">Top 10</button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="produtosChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="recent-orders">
+                    <div class="section-header">
+                        <h3>Pedidos Recentes</h3>
+                        <a href="pedidos.html" class="btn-view-all">Ver Todos</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Data</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#1001</td>
+                                    <td>João Silva</td>
+                                    <td>06/06/2025 19:30</td>
+                                    <td>R$ 75,90</td>
+                                    <td><span class="status-badge pending">Pendente</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#1000</td>
+                                    <td>Maria Santos</td>
+                                    <td>06/06/2025 19:15</td>
+                                    <td>R$ 92,80</td>
+                                    <td><span class="status-badge processing">Em Preparo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#999</td>
+                                    <td>Pedro Oliveira</td>
+                                    <td>06/06/2025 18:45</td>
+                                    <td>R$ 63,50</td>
+                                    <td><span class="status-badge shipping">Em Entrega</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#998</td>
+                                    <td>Ana Souza</td>
+                                    <td>06/06/2025 18:20</td>
+                                    <td>R$ 105,70</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#997</td>
+                                    <td>Carlos Mendes</td>
+                                    <td>06/06/2025 17:55</td>
+                                    <td>R$ 48,90</td>
+                                    <td><span class="status-badge cancelled">Cancelado</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pedido -->
+    <div class="modal" id="modal-pedido">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detalhes do Pedido #1001</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="pedido-info">
+                    <div class="info-section">
+                        <h4>Informações do Cliente</h4>
+                        <p><strong>Nome:</strong> João Silva</p>
+                        <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                        <p><strong>Email:</strong> joao.silva@email.com</p>
+                    </div>
+                    <div class="info-section">
+                        <h4>Informações do Pedido</h4>
+                        <p><strong>Data:</strong> 06/06/2025 19:30</p>
+                        <p><strong>Status:</strong> Pendente</p>
+                        <p><strong>Pagamento:</strong> Cartão de Crédito</p>
+                        <p><strong>Total:</strong> R$ 75,90</p>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th>Preço</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pizza Calabresa (Média)<br><small>Borda Recheada</small></td>
+                                <td>1</td>
+                                <td>R$ 48,90</td>
+                                <td>R$ 48,90</td>
+                            </tr>
+                            <tr>
+                                <td>Pizza Margherita (Pequena)</td>
+                                <td>1</td>
+                                <td>R$ 36,70</td>
+                                <td>R$ 36,70</td>
+                            </tr>
+                            <tr>
+                                <td>Refrigerante Cola 2L</td>
+                                <td>1</td>
+                                <td>R$ 12,00</td>
+                                <td>R$ 12,00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Subtotal:</strong></td>
+                                <td>R$ 97,60</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Taxa de Entrega:</strong></td>
+                                <td>R$ 5,00</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Desconto:</strong></td>
+                                <td>-R$ 26,70</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                                <td>R$ 75,90</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="pedido-timeline">
+                    <h4>Timeline do Pedido</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon completed"><i class="fas fa-check"></i></div>
+                            <div class="timeline-content">
+                                <h5>Pedido Recebido</h5>
+                                <p>06/06/2025 19:30</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending"><i class="fas fa-clock"></i></div>
+                            <div class="timeline-content">
+                                <h5>Em Preparo</h5>
+                                <p>Aguardando confirmação</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending"><i class="fas fa-truck"></i></div>
+                            <div class="timeline-content">
+                                <h5>Em Entrega</h5>
+                                <p>Aguardando</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon pending"><i class="fas fa-check-circle"></i></div>
+                            <div class="timeline-content">
+                                <h5>Entregue</h5>
+                                <p>Aguardando</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="status-actions">
+                    <button class="btn-primary">Confirmar Preparo</button>
+                    <button class="btn-secondary">Cancelar Pedido</button>
+                </div>
+                <button class="btn-secondary close">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/admin.js"></script>
+    <script>
+        // Inicializar gráficos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gráfico de Vendas
+            const vendasCtx = document.getElementById('vendasChart').getContext('2d');
+            new Chart(vendasCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    datasets: [{
+                        label: 'Vendas',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: '#e67e22',
+                        backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Gráfico de Produtos
+            const produtosCtx = document.getElementById('produtosChart').getContext('2d');
+            new Chart(produtosCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pizza Calabresa', 'Pizza Margherita', 'Pizza Portuguesa', 'Pizza 4 Queijos', 'Outros'],
+                    datasets: [{
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: [
+                            '#e67e22',
+                            '#3498db',
+                            '#2ecc71',
+                            '#f39c12',
+                            '#95a5a6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
