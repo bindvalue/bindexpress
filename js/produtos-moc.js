@@ -5,7 +5,7 @@ const produtosData = [
         nome: "Pizza Margherita",
         descricao: "Molho de tomate, mussarela, tomate e manjericão fresco.",
         preco: 45.90,
-        imagem: "img/pizza-margherita.jpg",
+        imagem: "img/produtos/margerita.png",
         categoria: "tradicionais"
     },
     {
@@ -13,7 +13,7 @@ const produtosData = [
         nome: "Pizza Calabresa",
         descricao: "Molho de tomate, mussarela e calabresa fatiada.",
         preco: 48.90,
-        imagem: "img/pizza-calabresa.jpg",
+        imagem: "img/produtos/calabresa.png",
         categoria: "tradicionais"
     },
     {
@@ -21,7 +21,7 @@ const produtosData = [
         nome: "Pizza Quatro Queijos",
         descricao: "Molho de tomate, mussarela, provolone, gorgonzola e parmesão.",
         preco: 52.90,
-        imagem: "img/pizza-quatro-queijos.jpg",
+        imagem: "img/produtos/4-queijos.png",
         categoria: "tradicionais"
     },
     {
@@ -29,7 +29,7 @@ const produtosData = [
         nome: "Pizza Portuguesa",
         descricao: "Molho de tomate, mussarela, presunto, ovos, cebola e azeitonas.",
         preco: 50.90,
-        imagem: "img/pizza-portuguesa.jpg",
+        imagem: "img/produtos/portuguesa.png",
         categoria: "tradicionais"
     },
     {
@@ -37,7 +37,7 @@ const produtosData = [
         nome: "Pizza Frango com Catupiry",
         descricao: "Molho de tomate, mussarela, frango desfiado e catupiry.",
         preco: 53.90,
-        imagem: "img/pizza-frango-catupiry.jpg",
+        imagem: "img/produtos/frango-catupiry.png",
         categoria: "tradicionais"
     },
     {
@@ -45,7 +45,7 @@ const produtosData = [
         nome: "Pizza Vegetariana",
         descricao: "Molho de tomate, mussarela, brócolis, tomate, milho, ervilha e palmito.",
         preco: 49.90,
-        imagem: "img/pizza-vegetariana.jpg",
+        imagem: "img/produtos/vegetariana.png",
         categoria: "tradicionais"
     },
     {
@@ -53,7 +53,7 @@ const produtosData = [
         nome: "Pizza Pepperoni",
         descricao: "Molho de tomate, mussarela e pepperoni.",
         preco: 55.90,
-        imagem: "img/pizza-pepperoni.jpg",
+        imagem: "img/produtos/pepperoni.png",
         categoria: "premium"
     },
     {
@@ -61,7 +61,7 @@ const produtosData = [
         nome: "Pizza Camarão",
         descricao: "Molho de tomate, mussarela, camarão, alho e salsinha.",
         preco: 65.90,
-        imagem: "img/pizza-camarao.jpg",
+        imagem: "img/produtos/camarao.png",
         categoria: "premium"
     },
     {
@@ -69,7 +69,7 @@ const produtosData = [
         nome: "Pizza Filé Mignon",
         descricao: "Molho de tomate, mussarela, filé mignon, cebola caramelizada e molho especial.",
         preco: 68.90,
-        imagem: "img/pizza-file-mignon.jpg",
+        imagem: "img/produtos/file-mignon.png",
         categoria: "premium"
     },
     {
@@ -77,7 +77,7 @@ const produtosData = [
         nome: "Pizza Salmão",
         descricao: "Molho de tomate, cream cheese, salmão defumado, alcaparras e cebola roxa.",
         preco: 69.90,
-        imagem: "img/pizza-salmao.jpg",
+        imagem: "img/produtos/salmao.png",
         categoria: "premium"
     },
     {
@@ -85,7 +85,7 @@ const produtosData = [
         nome: "Pizza Trufada",
         descricao: "Molho de tomate, mussarela de búfala, cogumelos, azeite trufado e rúcula.",
         preco: 72.90,
-        imagem: "img/pizza-trufada.jpg",
+        imagem: "img/produtos/trufada.png",
         categoria: "premium"
     },
     {
@@ -93,7 +93,7 @@ const produtosData = [
         nome: "Pizza Chocolate",
         descricao: "Chocolate ao leite, morangos e confetes.",
         preco: 48.90,
-        imagem: "img/pizza-chocolate.jpg",
+        imagem: "img/produtos/chocolate.png",
         categoria: "doces"
     },
     {
@@ -101,7 +101,7 @@ const produtosData = [
         nome: "Pizza Banana com Canela",
         descricao: "Chocolate ao leite, banana caramelizada e canela.",
         preco: 46.90,
-        imagem: "img/pizza-banana.jpg",
+        imagem: "img/produtos/banana-canela.png",
         categoria: "doces"
     },
     {
@@ -109,7 +109,7 @@ const produtosData = [
         nome: "Pizza Romeu e Julieta",
         descricao: "Queijo minas e goiabada.",
         preco: 45.90,
-        imagem: "img/pizza-romeu-julieta.jpg",
+        imagem: "img/produtos/romeu-julieta.png",
         categoria: "doces"
     },
     {
@@ -117,7 +117,7 @@ const produtosData = [
         nome: "Refrigerante Cola 2L",
         descricao: "Refrigerante sabor cola, garrafa de 2 litros.",
         preco: 12.00,
-        imagem: "img/refrigerante-cola.jpg",
+        imagem: "img/produtos/cola.png",
         categoria: "bebidas"
     },
     {
@@ -125,7 +125,7 @@ const produtosData = [
         nome: "Refrigerante Guaraná 2L",
         descricao: "Refrigerante sabor guaraná, garrafa de 2 litros.",
         preco: 10.00,
-        imagem: "img/refrigerante-guarana.jpg",
+        imagem: "img/produtos/guarana.png",
         categoria: "bebidas"
     },
     {
@@ -133,7 +133,7 @@ const produtosData = [
         nome: "Suco Natural 500ml",
         descricao: "Suco natural de laranja, abacaxi ou maracujá.",
         preco: 8.00,
-        imagem: "img/suco-natural.jpg",
+        imagem: "img/produtos/sucos.png",
         categoria: "bebidas"
     },
     {
@@ -141,7 +141,7 @@ const produtosData = [
         nome: "Água Mineral 500ml",
         descricao: "Água mineral sem gás, garrafa de 500ml.",
         preco: 5.00,
-        imagem: "img/agua-mineral.jpg",
+        imagem: "img/produtos/aguamineral.png",
         categoria: "bebidas"
     }
 ];
