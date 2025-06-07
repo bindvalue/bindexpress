@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos - PizzaExpress Admin</title>
+    <title>Pedidos - BindExpress Admin</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,10 @@
                 <ul>
                     <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     <li class="active"><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
-                    <li><a href="#"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -94,10 +94,10 @@
                         <button class="btn-clear-filter">Limpar</button>
                     </div>
                     <div class="actions">
-                        <button class="btn-action" id="btn-imprimir-todos">
+                        <button class="btn-action-export" id="btn-imprimir-todos">
                             <i class="fas fa-print"></i> Imprimir Selecionados
                         </button>
-                        <button class="btn-action" id="btn-exportar">
+                        <button class="btn-action-export" id="btn-exportar">
                             <i class="fas fa-file-export"></i> Exportar
                         </button>
                     </div>
@@ -114,283 +114,283 @@
                 </div>
 
                 <!-- Pedidos Table -->
-                <div class="table-responsive">
-                    <table class="table pedidos-table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <input type="checkbox" id="select-all">
-                                </th>
-                                <th>ID</th>
-                                <th>Cliente</th>
-                                <th>Data</th>
-                                <th>Total</th>
-                                <th>Pagamento</th>
-                                <th>Status</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#1001</td>
-                                <td>João Silva</td>
-                                <td>06/06/2025 19:30</td>
-                                <td>R$ 75,90</td>
-                                <td>Cartão de Crédito</td>
-                                <td><span class="status-badge pending">Pendente</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="em-preparo">Marcar como Em Preparo</a>
-                                                <a href="#" class="status-update" data-status="em-entrega">Marcar como Em Entrega</a>
-                                                <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table pedidos-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="select-all">
+                                    </th>
+                                    <th>ID</th>
+                                    <th>Cliente</th>
+                                    <th>Data</th>
+                                    <th>Total</th>
+                                    <th>Pagamento</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#1001</td>
+                                    <td>João Silva</td>
+                                    <td>06/06/2025 19:30</td>
+                                    <td>R$ 75,90</td>
+                                    <td>Cartão de Crédito</td>
+                                    <td><span class="status-badge pending">Pendente</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="em-preparo">Marcar como Em Preparo</a>
+                                                    <a href="#" class="status-update" data-status="em-entrega">Marcar como Em Entrega</a>
+                                                    <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#1000</td>
-                                <td>Maria Santos</td>
-                                <td>06/06/2025 19:15</td>
-                                <td>R$ 92,80</td>
-                                <td>PIX</td>
-                                <td><span class="status-badge processing">Em Preparo</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="em-entrega">Marcar como Em Entrega</a>
-                                                <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#1000</td>
+                                    <td>Maria Santos</td>
+                                    <td>06/06/2025 19:15</td>
+                                    <td>R$ 92,80</td>
+                                    <td>PIX</td>
+                                    <td><span class="status-badge processing">Em Preparo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="em-entrega">Marcar como Em Entrega</a>
+                                                    <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#999</td>
-                                <td>Pedro Oliveira</td>
-                                <td>06/06/2025 18:45</td>
-                                <td>R$ 63,50</td>
-                                <td>Dinheiro</td>
-                                <td><span class="status-badge shipping">Em Entrega</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#999</td>
+                                    <td>Pedro Oliveira</td>
+                                    <td>06/06/2025 18:45</td>
+                                    <td>R$ 63,50</td>
+                                    <td>Dinheiro</td>
+                                    <td><span class="status-badge shipping">Em Entrega</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="entregue">Marcar como Entregue</a>
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#998</td>
-                                <td>Ana Souza</td>
-                                <td>06/06/2025 18:20</td>
-                                <td>R$ 105,70</td>
-                                <td>Cartão de Débito</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#998</td>
+                                    <td>Ana Souza</td>
+                                    <td>06/06/2025 18:20</td>
+                                    <td>R$ 105,70</td>
+                                    <td>Cartão de Débito</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#997</td>
-                                <td>Carlos Mendes</td>
-                                <td>06/06/2025 17:55</td>
-                                <td>R$ 48,90</td>
-                                <td>PIX</td>
-                                <td><span class="status-badge cancelled">Cancelado</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="pendente">Reativar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#997</td>
+                                    <td>Carlos Mendes</td>
+                                    <td>06/06/2025 17:55</td>
+                                    <td>R$ 48,90</td>
+                                    <td>PIX</td>
+                                    <td><span class="status-badge cancelled">Cancelado</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="pendente">Reativar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#996</td>
-                                <td>Fernanda Lima</td>
-                                <td>06/06/2025 17:30</td>
-                                <td>R$ 87,40</td>
-                                <td>Cartão de Crédito</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#996</td>
+                                    <td>Fernanda Lima</td>
+                                    <td>06/06/2025 17:30</td>
+                                    <td>R$ 87,40</td>
+                                    <td>Cartão de Crédito</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#995</td>
-                                <td>Roberto Alves</td>
-                                <td>06/06/2025 17:15</td>
-                                <td>R$ 56,80</td>
-                                <td>Dinheiro</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#995</td>
+                                    <td>Roberto Alves</td>
+                                    <td>06/06/2025 17:15</td>
+                                    <td>R$ 56,80</td>
+                                    <td>Dinheiro</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#994</td>
-                                <td>Juliana Costa</td>
-                                <td>06/06/2025 16:50</td>
-                                <td>R$ 72,30</td>
-                                <td>PIX</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#994</td>
+                                    <td>Juliana Costa</td>
+                                    <td>06/06/2025 16:50</td>
+                                    <td>R$ 72,30</td>
+                                    <td>PIX</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#993</td>
-                                <td>Marcos Santos</td>
-                                <td>06/06/2025 16:30</td>
-                                <td>R$ 94,60</td>
-                                <td>Cartão de Crédito</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#993</td>
+                                    <td>Marcos Santos</td>
+                                    <td>06/06/2025 16:30</td>
+                                    <td>R$ 94,60</td>
+                                    <td>Cartão de Crédito</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" class="select-pedido">
-                                </td>
-                                <td>#992</td>
-                                <td>Luciana Ferreira</td>
-                                <td>06/06/2025 16:15</td>
-                                <td>R$ 68,90</td>
-                                <td>Cartão de Débito</td>
-                                <td><span class="status-badge delivered">Entregue</span></td>
-                                <td>
-                                    <div class="table-actions">
-                                        <button class="btn-action view"><i class="fas fa-eye"></i></button>
-                                        <button class="btn-action edit"><i class="fas fa-edit"></i></button>
-                                        <button class="btn-action print"><i class="fas fa-print"></i></button>
-                                        <div class="dropdown">
-                                            <button class="btn-action"><i class="fas fa-ellipsis-v"></i></button>
-                                            <div class="dropdown-menu">
-                                                <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="select-pedido">
+                                    </td>
+                                    <td>#992</td>
+                                    <td>Luciana Ferreira</td>
+                                    <td>06/06/2025 16:15</td>
+                                    <td>R$ 68,90</td>
+                                    <td>Cartão de Débito</td>
+                                    <td><span class="status-badge delivered">Entregue</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action print"><i class="fas fa-print"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action dropdown"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-update" data-status="cancelado">Cancelar Pedido</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- Pagination -->
                 <div class="pagination">
-                    <button class="page-btn" disabled><i class="fas fa-angle-double-left"></i></button>
-                    <button class="page-btn" disabled><i class="fas fa-angle-left"></i></button>
+                    <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
                     <button class="page-btn active">1</button>
                     <button class="page-btn">2</button>
                     <button class="page-btn">3</button>
-                    <div class="page-dots">...</div>
-                    <button class="page-btn">12</button>
-                    <button class="page-btn"><i class="fas fa-angle-right"></i></button>
-                    <button class="page-btn"><i class="fas fa-angle-double-right"></i></button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn">10</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -410,6 +410,7 @@
                         <p><strong>Nome:</strong> João Silva</p>
                         <p><strong>Telefone:</strong> (11) 98765-4321</p>
                         <p><strong>Email:</strong> joao.silva@email.com</p>
+                        <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro</p>
                     </div>
                     <div class="info-section">
                         <h4>Informações do Pedido</h4>
@@ -480,21 +481,21 @@
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon active"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-clock"></i></div>
                             <div class="timeline-content">
                                 <h5>Em Preparo</h5>
-                                <p>Aguardando</p>
+                                <p>Aguardando confirmação</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-truck"></i></div>
                             <div class="timeline-content">
                                 <h5>Em Entrega</h5>
                                 <p>Aguardando</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-check-circle"></i></div>
                             <div class="timeline-content">
                                 <h5>Entregue</h5>
                                 <p>Aguardando</p>
@@ -505,149 +506,173 @@
             </div>
             <div class="modal-footer">
                 <div class="status-actions">
-                    <select id="alterar-status">
-                        <option value="">Alterar Status</option>
-                        <option value="em-preparo">Em Preparo</option>
-                        <option value="em-entrega">Em Entrega</option>
-                        <option value="entregue">Entregue</option>
-                        <option value="cancelado">Cancelado</option>
-                    </select>
-                    <button id="btn-salvar-status" class="btn-primary">Salvar</button>
+                    <button class="btn-primary">Confirmar Preparo</button>
+                    <button class="btn-secondary">Cancelar Pedido</button>
                 </div>
-                <div>
-                    <button id="btn-fechar-modal" class="btn-secondary">Fechar</button>
-                    <button id="btn-imprimir-pedido" class="btn-primary">Imprimir</button>
-                </div>
+                <button class="btn-secondary close">Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Impressão -->
-    <div class="modal" id="modal-impressao">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Imprimir Pedido #1001</h3>
-                <span class="close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="impressao-opcoes">
-                    <h4>Opções de Impressão</h4>
-                    <div class="opcoes-form">
-                        <div class="radio-group">
-                            <h5>Formato</h5>
-                            <label>
-                                <input type="radio" name="formato" value="comanda" checked> Comanda
-                            </label>
-                            <label>
-                                <input type="radio" name="formato" value="completo"> Completo
-                            </label>
-                        </div>
-                        <div class="radio-group">
-                            <h5>Tamanho</h5>
-                            <label>
-                                <input type="radio" name="tamanho" value="80mm" checked> 80mm
-                            </label>
-                            <label>
-                                <input type="radio" name="tamanho" value="a4"> A4
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <h5>Opções</h5>
-                            <label>
-                                <input type="checkbox" name="opcao" value="logo" checked> Incluir Logo
-                            </label>
-                            <label>
-                                <input type="checkbox" name="opcao" value="endereco" checked> Incluir Endereço
-                            </label>
-                            <label>
-                                <input type="checkbox" name="opcao" value="qrcode"> Incluir QR Code
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="impressao-preview">
-                    <h4>Pré-visualização</h4>
-                    <div class="preview-container">
-                        <div class="comanda-preview">
-                            <div class="comanda-header">
-                                <h3>PizzaExpress</h3>
-                                <p>Av. das Pizzas, 123 - Centro</p>
-                                <p>Tel: (11) 3456-7890</p>
-                            </div>
-                            <div class="comanda-info">
-                                <p>Pedido: #1001</p>
-                                <p>Data: 06/06/2025 19:30</p>
-                                <p>Cliente: João Silva</p>
-                                <p>Tel: (11) 98765-4321</p>
-                            </div>
-                            <div class="comanda-itens">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Item</th>
-                                            <th>Qtd</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Pizza Calabresa (M)</td>
-                                            <td>1</td>
-                                            <td>48,90</td>
-                                        </tr>
-                                        <tr>
-                                            <td>- Borda Recheada</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pizza Margherita (P)</td>
-                                            <td>1</td>
-                                            <td>36,70</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Refrigerante Cola 2L</td>
-                                            <td>1</td>
-                                            <td>12,00</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="2">Subtotal:</td>
-                                            <td>97,60</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Taxa de Entrega:</td>
-                                            <td>5,00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Desconto:</td>
-                                            <td>-26,70</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"><strong>Total:</strong></td>
-                                            <td><strong>75,90</strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="comanda-footer">
-                                <p>Forma de Pagamento: Cartão de Crédito</p>
-                                <p class="agradecimento">Obrigado pela preferência!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="btn-cancelar-impressao" class="btn-secondary">Cancelar</button>
-                <button id="btn-confirmar-impressao" class="btn-primary">Imprimir</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Scripts -->
     <script src="../js/admin.js"></script>
+    <script>
+        // Funcionalidades específicas da página de pedidos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtros
+            const filtroStatus = document.getElementById('filtro-status');
+            const filtroData = document.getElementById('filtro-data');
+            const filtroPagamento = document.getElementById('filtro-pagamento');
+            const btnFiltrar = document.querySelector('.btn-filter');
+            const btnLimpar = document.querySelector('.btn-clear-filter');
+
+            // Tabs de status
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            // Seleção múltipla
+            const selectAll = document.getElementById('select-all');
+            const selectPedidos = document.querySelectorAll('.select-pedido');
+
+            // Event listeners para tabs
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const status = this.getAttribute('data-status');
+                    filtrarPorStatus(status);
+                });
+            });
+
+            // Event listener para select all
+            selectAll.addEventListener('change', function() {
+                selectPedidos.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+                updateBulkActions();
+            });
+
+            // Event listeners para checkboxes individuais
+            selectPedidos.forEach(checkbox => {
+                checkbox.addEventListener('change', updateBulkActions);
+            });
+
+            // Filtrar por status
+            function filtrarPorStatus(status) {
+                const rows = document.querySelectorAll('.pedidos-table tbody tr');
+                
+                rows.forEach(row => {
+                    if (status === 'todos') {
+                        row.style.display = '';
+                    } else {
+                        const statusBadge = row.querySelector('.status-badge');
+                        const rowStatus = statusBadge.textContent.toLowerCase().trim();
+                        
+                        const statusMap = {
+                            'pendente': 'pendente',
+                            'em-preparo': 'em preparo',
+                            'em-entrega': 'em entrega',
+                            'entregue': 'entregue',
+                            'cancelado': 'cancelado'
+                        };
+                        
+                        if (statusMap[status] === rowStatus) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            // Atualizar ações em lote
+            function updateBulkActions() {
+                const checkedBoxes = document.querySelectorAll('.select-pedido:checked');
+                const bulkActions = document.querySelector('.bulk-actions');
+                
+                if (checkedBoxes.length > 0) {
+                    if (!bulkActions) {
+                        createBulkActions();
+                    }
+                    document.querySelector('.selected-count').textContent = checkedBoxes.length;
+                } else {
+                    if (bulkActions) {
+                        bulkActions.remove();
+                    }
+                }
+            }
+
+            // Criar ações em lote
+            function createBulkActions() {
+                const actionsDiv = document.querySelector('.actions');
+                const bulkActions = document.createElement('div');
+                bulkActions.className = 'bulk-actions';
+                bulkActions.innerHTML = `
+                    <span class="selected-count">0</span> itens selecionados
+                    <button class="btn-action" onclick="updateSelectedStatus('em-preparo')">
+                        <i class="fas fa-clock"></i> Marcar como Em Preparo
+                    </button>
+                    <button class="btn-action" onclick="updateSelectedStatus('em-entrega')">
+                        <i class="fas fa-truck"></i> Marcar como Em Entrega
+                    </button>
+                    <button class="btn-action" onclick="updateSelectedStatus('entregue')">
+                        <i class="fas fa-check"></i> Marcar como Entregue
+                    </button>
+                `;
+                actionsDiv.appendChild(bulkActions);
+            }
+
+            // Limpar filtros
+            btnLimpar.addEventListener('click', function() {
+                filtroStatus.value = '';
+                filtroData.value = '';
+                filtroPagamento.value = '';
+                
+                // Mostrar todas as linhas
+                const rows = document.querySelectorAll('.pedidos-table tbody tr');
+                rows.forEach(row => row.style.display = '');
+                
+                // Resetar tab ativo
+                tabBtns.forEach(t => t.classList.remove('active'));
+                document.querySelector('.tab-btn[data-status="todos"]').classList.add('active');
+            });
+        });
+
+        // Função global para atualizar status de pedidos selecionados
+        function updateSelectedStatus(newStatus) {
+            const checkedBoxes = document.querySelectorAll('.select-pedido:checked');
+            
+            checkedBoxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                const statusBadge = row.querySelector('.status-badge');
+                
+                // Atualizar classe e texto do badge
+                statusBadge.className = 'status-badge';
+                
+                switch(newStatus) {
+                    case 'em-preparo':
+                        statusBadge.classList.add('processing');
+                        statusBadge.textContent = 'Em Preparo';
+                        break;
+                    case 'em-entrega':
+                        statusBadge.classList.add('shipping');
+                        statusBadge.textContent = 'Em Entrega';
+                        break;
+                    case 'entregue':
+                        statusBadge.classList.add('delivered');
+                        statusBadge.textContent = 'Entregue';
+                        break;
+                }
+                
+                // Desmarcar checkbox
+                checkbox.checked = false;
+            });
+            
+            // Atualizar ações em lote
+            document.querySelector('.bulk-actions')?.remove();
+            document.getElementById('select-all').checked = false;
+        }
+    </script>
 </body>
 </html>
 

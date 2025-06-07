@@ -119,3 +119,22 @@ function mostrarLoader(mostrar) {
     }
 }
 
+// Exemplo após login bem-sucedido
+const urlAvatar = 'img/avatar-admin.png'; // ou vindo da API
+localStorage.setItem('userAvatar', urlAvatar);
+
+function configurarAvatarUsuario() {
+    const avatar = document.querySelector('.user-profile img');
+    const avatarSalvo = localStorage.getItem('userAvatar');
+
+    if (avatar && avatarSalvo) {
+        avatar.src = avatarSalvo;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    initLoginForm();
+    configurarAvatarUsuario(); // <-- nova função
+});
+
+avatar.src = avatarSalvo || './img/avat-user.png';

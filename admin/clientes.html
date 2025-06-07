@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li class="active"><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar clientes...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clientes Page -->
+            <div class="clientes-page">
+                <div class="page-header">
+                    <h1 class="page-title">Gerenciar Clientes</h1>
+                    <button class="btn-primary" id="btn-novo-cliente">
+                        <i class="fas fa-plus"></i> Novo Cliente
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total de Clientes</h3>
+                            <div class="stat-value">1.247</div>
+                            <div class="stat-change positive">
+                                <span>+12%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Novos Este Mês</h3>
+                            <div class="stat-value">89</div>
+                            <div class="stat-change positive">
+                                <span>+25%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Clientes VIP</h3>
+                            <div class="stat-value">156</div>
+                            <div class="stat-change positive">
+                                <span>+8%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pedidos Médios</h3>
+                            <div class="stat-value">3.2</div>
+                            <div class="stat-change neutral">
+                                <span>0%</span>
+                                <i class="fas fa-minus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros e Ações -->
+                <div class="filters-actions">
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select id="filtro-status">
+                                <option value="">Todos</option>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                                <option value="vip">VIP</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Cidade</label>
+                            <select id="filtro-cidade">
+                                <option value="">Todas</option>
+                                <option value="sao-paulo">São Paulo</option>
+                                <option value="rio-janeiro">Rio de Janeiro</option>
+                                <option value="belo-horizonte">Belo Horizonte</option>
+                                <option value="brasilia">Brasília</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Data de Cadastro</label>
+                            <input type="date" id="filtro-data">
+                        </div>
+                        <button class="btn-filter">Filtrar</button>
+                        <button class="btn-clear-filter">Limpar</button>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-action" id="btn-exportar-clientes">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                        <button class="btn-action" id="btn-enviar-email">
+                            <i class="fas fa-envelope"></i> Email em Massa
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Abas de Status -->
+                <div class="status-tabs">
+                    <button class="tab-btn active" data-status="todos">Todos (1.247)</button>
+                    <button class="tab-btn" data-status="ativo">Ativos (1.156)</button>
+                    <button class="tab-btn" data-status="inativo">Inativos (91)</button>
+                    <button class="tab-btn" data-status="vip">VIP (156)</button>
+                    <button class="tab-btn" data-status="novos">Novos (89)</button>
+                </div>
+
+                <!-- Tabela de Clientes -->
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table clientes-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="select-all-clientes">
+                                    </th>
+                                    <th>Cliente</th>
+                                    <th>Email</th>
+                                    <th>Telefone</th>
+                                    <th>Cidade</th>
+                                    <th>Pedidos</th>
+                                    <th>Total Gasto</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="select-cliente"></td>
+                                    <td>
+                                        <div class="cliente-info">
+                                            <div class="cliente-avatar">
+                                                <img src="img/avatar-1.jpg" alt="João Silva">
+                                            </div>
+                                            <div class="cliente-dados">
+                                                <h4>João Silva</h4>
+                                                <p>Cliente desde 15/03/2024</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>joao.silva@email.com</td>
+                                    <td>(11) 98765-4321</td>
+                                    <td>São Paulo - SP</td>
+                                    <td class="pedidos-count">23</td>
+                                    <td class="total-gasto">R$ 1.247,80</td>
+                                    <td><span class="status-badge vip">VIP</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action message" title="Enviar Mensagem"><i class="fas fa-comment"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="historico-pedidos">Ver Histórico</a>
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-cliente">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-cliente"></td>
+                                    <td>
+                                        <div class="cliente-info">
+                                            <div class="cliente-avatar">
+                                                <img src="img/avatar-2.jpg" alt="Maria Santos">
+                                            </div>
+                                            <div class="cliente-dados">
+                                                <h4>Maria Santos</h4>
+                                                <p>Cliente desde 22/01/2024</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>maria.santos@email.com</td>
+                                    <td>(11) 97654-3210</td>
+                                    <td>São Paulo - SP</td>
+                                    <td class="pedidos-count">15</td>
+                                    <td class="total-gasto">R$ 892,50</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action message" title="Enviar Mensagem"><i class="fas fa-comment"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="historico-pedidos">Ver Histórico</a>
+                                                    <a href="#" class="status-toggle" data-status="vip">Promover a VIP</a>
+                                                    <a href="#" class="delete-cliente">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-cliente"></td>
+                                    <td>
+                                        <div class="cliente-info">
+                                            <div class="cliente-avatar">
+                                                <img src="img/avatar-3.jpg" alt="Pedro Oliveira">
+                                            </div>
+                                            <div class="cliente-dados">
+                                                <h4>Pedro Oliveira</h4>
+                                                <p>Cliente desde 05/12/2023</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>pedro.oliveira@email.com</td>
+                                    <td>(11) 96543-2109</td>
+                                    <td>Rio de Janeiro - RJ</td>
+                                    <td class="pedidos-count">8</td>
+                                    <td class="total-gasto">R$ 456,30</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action message" title="Enviar Mensagem"><i class="fas fa-comment"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="historico-pedidos">Ver Histórico</a>
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-cliente">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-cliente"></td>
+                                    <td>
+                                        <div class="cliente-info">
+                                            <div class="cliente-avatar">
+                                                <img src="img/avatar-4.jpg" alt="Ana Souza">
+                                            </div>
+                                            <div class="cliente-dados">
+                                                <h4>Ana Souza</h4>
+                                                <p>Cliente desde 18/11/2023</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>ana.souza@email.com</td>
+                                    <td>(11) 95432-1098</td>
+                                    <td>Belo Horizonte - MG</td>
+                                    <td class="pedidos-count">31</td>
+                                    <td class="total-gasto">R$ 2.156,90</td>
+                                    <td><span class="status-badge vip">VIP</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action message" title="Enviar Mensagem"><i class="fas fa-comment"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="historico-pedidos">Ver Histórico</a>
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-cliente">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-cliente"></td>
+                                    <td>
+                                        <div class="cliente-info">
+                                            <div class="cliente-avatar">
+                                                <img src="img/avatar-5.jpg" alt="Carlos Mendes">
+                                            </div>
+                                            <div class="cliente-dados">
+                                                <h4>Carlos Mendes</h4>
+                                                <p>Cliente desde 02/06/2024</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>carlos.mendes@email.com</td>
+                                    <td>(11) 94321-0987</td>
+                                    <td>Brasília - DF</td>
+                                    <td class="pedidos-count">2</td>
+                                    <td class="total-gasto">R$ 127,80</td>
+                                    <td><span class="status-badge novo">Novo</span></td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action message" title="Enviar Mensagem"><i class="fas fa-comment"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="historico-pedidos">Ver Histórico</a>
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-cliente">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Paginação -->
+                <div class="pagination">
+                    <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn">25</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Cliente -->
+    <div class="modal" id="modal-cliente">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-cliente-titulo">Novo Cliente</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-cliente">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-nome">Nome Completo *</label>
+                            <input type="text" id="cliente-nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-email">Email *</label>
+                            <input type="email" id="cliente-email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-telefone">Telefone *</label>
+                            <input type="tel" id="cliente-telefone" name="telefone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cpf">CPF</label>
+                            <input type="text" id="cliente-cpf" name="cpf">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-nascimento">Data de Nascimento</label>
+                            <input type="date" id="cliente-nascimento" name="nascimento">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-status">Status</label>
+                            <select id="cliente-status" name="status">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                                <option value="vip">VIP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-endereco">Endereço Completo</label>
+                        <textarea id="cliente-endereco" name="endereco" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cliente-cidade">Cidade</label>
+                            <input type="text" id="cliente-cidade" name="cidade">
+                        </div>
+                        <div class="form-group">
+                            <label for="cliente-cep">CEP</label>
+                            <input type="text" id="cliente-cep" name="cep">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cliente-observacoes">Observações</label>
+                        <textarea id="cliente-observacoes" name="observacoes" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cancelar-cliente">Cancelar</button>
+                <button type="submit" class="btn-primary" id="btn-salvar-cliente">Salvar Cliente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Histórico de Pedidos -->
+    <div class="modal" id="modal-historico">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Histórico de Pedidos - <span id="historico-cliente-nome"></span></h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="historico-stats">
+                    <div class="stat-item">
+                        <h4>Total de Pedidos</h4>
+                        <span id="historico-total-pedidos">23</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Total Gasto</h4>
+                        <span id="historico-total-gasto">R$ 1.247,80</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Ticket Médio</h4>
+                        <span id="historico-ticket-medio">R$ 54,25</span>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Último Pedido</h4>
+                        <span id="historico-ultimo-pedido">15/05/2024</span>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Pedido</th>
+                                <th>Data</th>
+                                <th>Itens</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historico-pedidos-lista">
+                            <!-- Pedidos serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-fechar-historico">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/n8n-integration.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/clientes.js"></script>
+</body>
+</html>
+

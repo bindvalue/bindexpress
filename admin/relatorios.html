@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li class="active"><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar relatórios...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relatórios Page -->
+            <div class="relatorios-page">
+                <div class="page-header">
+                    <h1 class="page-title">Relatórios e Analytics</h1>
+                    <div class="page-actions">
+                        <button class="btn-secondary" id="btn-exportar-relatorio">
+                            <i class="fas fa-download"></i> Exportar Relatório
+                        </button>
+                        <button class="btn-primary" id="btn-gerar-relatorio">
+                            <i class="fas fa-chart-line"></i> Gerar Relatório
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Filtros de Período -->
+                <div class="period-filters">
+                    <div class="filter-group">
+                        <label>Período</label>
+                        <select id="filtro-periodo">
+                            <option value="hoje">Hoje</option>
+                            <option value="ontem">Ontem</option>
+                            <option value="7dias">Últimos 7 dias</option>
+                            <option value="30dias" selected>Últimos 30 dias</option>
+                            <option value="90dias">Últimos 90 dias</option>
+                            <option value="personalizado">Período Personalizado</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" id="periodo-personalizado" style="display: none;">
+                        <label>Data Início</label>
+                        <input type="date" id="data-inicio">
+                    </div>
+                    <div class="filter-group" id="periodo-personalizado-fim" style="display: none;">
+                        <label>Data Fim</label>
+                        <input type="date" id="data-fim">
+                    </div>
+                    <button class="btn-filter" id="btn-aplicar-filtro">Aplicar</button>
+                </div>
+
+                <!-- KPIs Principais -->
+                <div class="kpis-container">
+                    <div class="kpi-card">
+                        <div class="kpi-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3>Receita Total</h3>
+                            <div class="kpi-value">R$ 24.750,00</div>
+                            <div class="kpi-change positive">
+                                <span>+18.5%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3>Total de Pedidos</h3>
+                            <div class="kpi-value">456</div>
+                            <div class="kpi-change positive">
+                                <span>+12.3%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3>Ticket Médio</h3>
+                            <div class="kpi-value">R$ 54,28</div>
+                            <div class="kpi-change negative">
+                                <span>-2.1%</span>
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="kpi-info">
+                            <h3>Novos Clientes</h3>
+                            <div class="kpi-value">89</div>
+                            <div class="kpi-change positive">
+                                <span>+25.7%</span>
+                                <i class="fas fa-arrow-up"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos Principais -->
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Receita por Período</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-chart="receita" data-period="dia">Dia</button>
+                                <button class="chart-btn" data-chart="receita" data-period="semana">Semana</button>
+                                <button class="chart-btn" data-chart="receita" data-period="mes">Mês</button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="receitaChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Produtos Mais Vendidos</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-chart="produtos" data-type="quantidade">Qtd</button>
+                                <button class="chart-btn" data-chart="produtos" data-type="receita">Receita</button>
+                            </div>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="produtosChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Pedidos por Status</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="statusChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Horários de Maior Movimento</h3>
+                        </div>
+                        <div class="chart-body">
+                            <canvas id="horariosChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabelas de Dados -->
+                <div class="data-tables">
+                    <div class="table-section">
+                        <div class="section-header">
+                            <h3>Top 10 Produtos</h3>
+                            <button class="btn-view-all">Ver Todos</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Categoria</th>
+                                        <th>Vendas</th>
+                                        <th>Receita</th>
+                                        <th>% do Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Pizza Calabresa</td>
+                                        <td>Pizza</td>
+                                        <td>89</td>
+                                        <td>R$ 4.085,10</td>
+                                        <td>16.5%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pizza Margherita</td>
+                                        <td>Pizza</td>
+                                        <td>76</td>
+                                        <td>R$ 3.260,40</td>
+                                        <td>13.2%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pizza 4 Queijos</td>
+                                        <td>Pizza</td>
+                                        <td>65</td>
+                                        <td>R$ 3.438,50</td>
+                                        <td>13.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Coca-Cola 2L</td>
+                                        <td>Bebida</td>
+                                        <td>156</td>
+                                        <td>R$ 1.872,00</td>
+                                        <td>7.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pizza Portuguesa</td>
+                                        <td>Pizza</td>
+                                        <td>45</td>
+                                        <td>R$ 2.295,00</td>
+                                        <td>9.3%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="table-section">
+                        <div class="section-header">
+                            <h3>Clientes VIP</h3>
+                            <button class="btn-view-all">Ver Todos</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Cliente</th>
+                                        <th>Pedidos</th>
+                                        <th>Total Gasto</th>
+                                        <th>Último Pedido</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Ana Souza</td>
+                                        <td>31</td>
+                                        <td>R$ 2.156,90</td>
+                                        <td>05/06/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>João Silva</td>
+                                        <td>23</td>
+                                        <td>R$ 1.247,80</td>
+                                        <td>06/06/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Roberto Alves</td>
+                                        <td>19</td>
+                                        <td>R$ 1.089,50</td>
+                                        <td>04/06/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fernanda Lima</td>
+                                        <td>18</td>
+                                        <td>R$ 987,40</td>
+                                        <td>06/06/2024</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marcos Santos</td>
+                                        <td>16</td>
+                                        <td>R$ 894,60</td>
+                                        <td>06/06/2024</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Métricas Adicionais -->
+                <div class="additional-metrics">
+                    <div class="metric-card">
+                        <h4>Taxa de Conversão</h4>
+                        <div class="metric-value">68.5%</div>
+                        <div class="metric-description">Visitantes que fizeram pedido</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Tempo Médio de Entrega</h4>
+                        <div class="metric-value">32 min</div>
+                        <div class="metric-description">Meta: 30 minutos</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Avaliação Média</h4>
+                        <div class="metric-value">4.7 ⭐</div>
+                        <div class="metric-description">Baseado em 234 avaliações</div>
+                    </div>
+                    <div class="metric-card">
+                        <h4>Taxa de Cancelamento</h4>
+                        <div class="metric-value">2.3%</div>
+                        <div class="metric-description">Meta: < 5%</div>
+                    </div>
+                </div>
+
+                <!-- Relatórios Personalizados -->
+                <div class="custom-reports">
+                    <div class="section-header">
+                        <h3>Relatórios Personalizados</h3>
+                        <button class="btn-primary" id="btn-novo-relatorio">
+                            <i class="fas fa-plus"></i> Novo Relatório
+                        </button>
+                    </div>
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <div class="report-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="report-info">
+                                <h4>Relatório de Vendas Mensal</h4>
+                                <p>Análise detalhada das vendas do mês</p>
+                                <div class="report-actions">
+                                    <button class="btn-action view">Visualizar</button>
+                                    <button class="btn-action download">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-card">
+                            <div class="report-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="report-info">
+                                <h4>Análise de Clientes</h4>
+                                <p>Comportamento e segmentação de clientes</p>
+                                <div class="report-actions">
+                                    <button class="btn-action view">Visualizar</button>
+                                    <button class="btn-action download">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-card">
+                            <div class="report-icon">
+                                <i class="fas fa-pizza-slice"></i>
+                            </div>
+                            <div class="report-info">
+                                <h4>Performance de Produtos</h4>
+                                <p>Análise de vendas por produto e categoria</p>
+                                <div class="report-actions">
+                                    <button class="btn-action view">Visualizar</button>
+                                    <button class="btn-action download">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-card">
+                            <div class="report-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="report-info">
+                                <h4>Análise de Horários</h4>
+                                <p>Padrões de pedidos por horário e dia</p>
+                                <div class="report-actions">
+                                    <button class="btn-action view">Visualizar</button>
+                                    <button class="btn-action download">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Gerar Relatório -->
+    <div class="modal" id="modal-gerar-relatorio">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Gerar Relatório Personalizado</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-relatorio">
+                    <div class="form-group">
+                        <label for="relatorio-nome">Nome do Relatório</label>
+                        <input type="text" id="relatorio-nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="relatorio-tipo">Tipo de Relatório</label>
+                        <select id="relatorio-tipo" name="tipo" required>
+                            <option value="">Selecione o tipo</option>
+                            <option value="vendas">Vendas</option>
+                            <option value="produtos">Produtos</option>
+                            <option value="clientes">Clientes</option>
+                            <option value="financeiro">Financeiro</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="relatorio-data-inicio">Data Início</label>
+                            <input type="date" id="relatorio-data-inicio" name="dataInicio" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="relatorio-data-fim">Data Fim</label>
+                            <input type="date" id="relatorio-data-fim" name="dataFim" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Métricas a Incluir</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="metricas[]" value="receita" checked>
+                                <span>Receita Total</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="metricas[]" value="pedidos" checked>
+                                <span>Número de Pedidos</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="metricas[]" value="ticket-medio">
+                                <span>Ticket Médio</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="metricas[]" value="produtos">
+                                <span>Produtos Mais Vendidos</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="metricas[]" value="clientes">
+                                <span>Análise de Clientes</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="relatorio-formato">Formato de Exportação</label>
+                        <select id="relatorio-formato" name="formato">
+                            <option value="pdf">PDF</option>
+                            <option value="excel">Excel</option>
+                            <option value="csv">CSV</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cancelar-relatorio">Cancelar</button>
+                <button type="submit" class="btn-primary" id="btn-confirmar-relatorio">Gerar Relatório</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/n8n-integration.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/relatorios.js"></script>
+</body>
+</html>
+

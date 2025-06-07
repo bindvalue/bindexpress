@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li class="active"><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar configurações...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configurações Page -->
+            <div class="configuracoes-page">
+                <div class="page-header">
+                    <h1 class="page-title">Configurações do Sistema</h1>
+                    <div class="page-actions">
+                        <button class="btn-secondary" id="btn-backup-config">
+                            <i class="fas fa-download"></i> Backup Configurações
+                        </button>
+                        <button class="btn-primary" id="btn-salvar-config">
+                            <i class="fas fa-save"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Abas de Configuração -->
+                <div class="config-tabs">
+                    <button class="tab-btn active" data-tab="geral">
+                        <i class="fas fa-cog"></i> Geral
+                    </button>
+                    <button class="tab-btn" data-tab="n8n">
+                        <i class="fas fa-robot"></i> Integração n8n
+                    </button>
+                    <button class="tab-btn" data-tab="pagamento">
+                        <i class="fas fa-credit-card"></i> Pagamentos
+                    </button>
+                    <button class="tab-btn" data-tab="entrega">
+                        <i class="fas fa-truck"></i> Entrega
+                    </button>
+                    <button class="tab-btn" data-tab="notificacoes">
+                        <i class="fas fa-bell"></i> Notificações
+                    </button>
+                    <button class="tab-btn" data-tab="seguranca">
+                        <i class="fas fa-shield-alt"></i> Segurança
+                    </button>
+                </div>
+
+                <!-- Conteúdo das Abas -->
+                <div class="config-content">
+                    
+                    <!-- Aba Geral -->
+                    <div class="tab-content active" id="tab-geral">
+                        <div class="config-section">
+                            <h3>Informações da Empresa</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="empresa-nome">Nome da Empresa</label>
+                                    <input type="text" id="empresa-nome" value="BindExpress Pizzaria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa-cnpj">CNPJ</label>
+                                    <input type="text" id="empresa-cnpj" value="12.345.678/0001-90">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="empresa-telefone">Telefone</label>
+                                    <input type="tel" id="empresa-telefone" value="(11) 3456-7890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="empresa-email">Email</label>
+                                    <input type="email" id="empresa-email" value="contato@bindexpress.com.br">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="empresa-endereco">Endereço Completo</label>
+                                <textarea id="empresa-endereco" rows="3">Rua das Pizzas, 123 - Centro - São Paulo - SP - CEP: 01234-567</textarea>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações de Funcionamento</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="horario-abertura">Horário de Abertura</label>
+                                    <input type="time" id="horario-abertura" value="18:00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="horario-fechamento">Horário de Fechamento</label>
+                                    <input type="time" id="horario-fechamento" value="23:30">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Dias de Funcionamento</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="segunda" checked>
+                                        <span>Segunda-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="terca" checked>
+                                        <span>Terça-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="quarta" checked>
+                                        <span>Quarta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="quinta" checked>
+                                        <span>Quinta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="sexta" checked>
+                                        <span>Sexta-feira</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="sabado" checked>
+                                        <span>Sábado</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="dias[]" value="domingo" checked>
+                                        <span>Domingo</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações do Site</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="site-titulo">Título do Site</label>
+                                    <input type="text" id="site-titulo" value="BindExpress - A Melhor Pizza da Cidade">
+                                </div>
+                                <div class="form-group">
+                                    <label for="site-descricao">Descrição</label>
+                                    <input type="text" id="site-descricao" value="Pizzas artesanais com ingredientes frescos e entrega rápida">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="site-logo">Logo da Empresa</label>
+                                <div class="file-upload">
+                                    <input type="file" id="site-logo" accept="image/*">
+                                    <div class="file-upload-preview">
+                                        <img id="preview-logo" src="img/logo.png" alt="Logo atual">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Integração n8n -->
+                    <div class="tab-content" id="tab-n8n">
+                        <div class="config-section">
+                            <div class="section-header">
+                                <h3>Configuração do n8n</h3>
+                                <div class="connection-status" id="n8n-status">
+                                    <span class="status-indicator offline"></span>
+                                    <span class="status-text">Desconectado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="n8n-url">URL Base do n8n</label>
+                                <input type="url" id="n8n-url" placeholder="https://n8n.bindvalue.com.br" value="https://n8n.bindvalue.com.br">
+                                <small>URL base da sua instância do n8n</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="n8n-api-key">Chave de API (Opcional)</label>
+                                <div class="input-with-button">
+                                    <input type="password" id="n8n-api-key" placeholder="Chave de API do n8n">
+                                    <button type="button" class="btn-toggle-password">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <small>Deixe em branco se não usar autenticação por API key</small>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="button" class="btn-primary" id="btn-testar-conexao">
+                                    <i class="fas fa-plug"></i> Testar Conexão
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Webhooks do n8n</h3>
+                            <p class="section-description">Configure os endpoints dos webhooks para cada tipo de evento</p>
+                            
+                            <div class="webhook-config">
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Novos Pedidos</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-pedidos" checked>
+                                            <label for="webhook-pedidos"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-pedidos-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-pedidos-url" value="https://n8n.bindvalue.com.br/webhook/novo-pedido">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="pedidos">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="pedidos">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Atualização de Status</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-status" checked>
+                                            <label for="webhook-status"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-status-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-status-url" value="https://n8n.bindvalue.com.br/webhook/atualizar-status">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="status">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="status">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Autenticação de Usuários</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-auth" checked>
+                                            <label for="webhook-auth"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-auth-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-auth-url" value="https://n8n.bindvalue.com.br/webhook/autenticar">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="auth">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="auth">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Obter Lista de Pedidos</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-listar" checked>
+                                            <label for="webhook-listar"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-listar-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-listar-url" value="https://n8n.bindvalue.com.br/webhook/obter-pedidos">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="listar">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="listar">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="webhook-item">
+                                    <div class="webhook-header">
+                                        <h4>Contato/Suporte</h4>
+                                        <div class="webhook-toggle">
+                                            <input type="checkbox" id="webhook-contato">
+                                            <label for="webhook-contato"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="webhook-contato-url">URL do Webhook</label>
+                                        <input type="url" id="webhook-contato-url" placeholder="https://n8n.bindvalue.com.br/webhook/contato">
+                                    </div>
+                                    <div class="webhook-actions">
+                                        <button type="button" class="btn-secondary btn-test-webhook" data-webhook="contato">
+                                            <i class="fas fa-vial"></i> Testar
+                                        </button>
+                                        <button type="button" class="btn-secondary btn-copy-webhook" data-webhook="contato">
+                                            <i class="fas fa-copy"></i> Copiar URL
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Configurações Avançadas</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="n8n-timeout">Timeout (segundos)</label>
+                                    <input type="number" id="n8n-timeout" value="30" min="5" max="300">
+                                    <small>Tempo limite para requisições ao n8n</small>
+                                </div>
+                                <div class="form-group">
+                                    <label for="n8n-retry">Tentativas de Retry</label>
+                                    <input type="number" id="n8n-retry" value="3" min="0" max="10">
+                                    <small>Número de tentativas em caso de falha</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="n8n-debug" checked>
+                                    <span>Modo Debug</span>
+                                </label>
+                                <small>Ativa logs detalhados para depuração</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="n8n-offline-queue" checked>
+                                    <span>Fila Offline</span>
+                                </label>
+                                <small>Armazena requisições quando o n8n estiver indisponível</small>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Status e Logs</h3>
+                            <div class="status-grid">
+                                <div class="status-card">
+                                    <h4>Última Conexão</h4>
+                                    <span id="ultima-conexao">06/06/2024 14:32</span>
+                                </div>
+                                <div class="status-card">
+                                    <h4>Requisições Hoje</h4>
+                                    <span id="requisicoes-hoje">127</span>
+                                </div>
+                                <div class="status-card">
+                                    <h4>Taxa de Sucesso</h4>
+                                    <span id="taxa-sucesso">98.5%</span>
+                                </div>
+                                <div class="status-card">
+                                    <h4>Fila Offline</h4>
+                                    <span id="fila-offline">0 itens</span>
+                                </div>
+                            </div>
+                            <div class="logs-section">
+                                <div class="logs-header">
+                                    <h4>Logs Recentes</h4>
+                                    <button type="button" class="btn-secondary" id="btn-limpar-logs">
+                                        <i class="fas fa-trash"></i> Limpar Logs
+                                    </button>
+                                </div>
+                                <div class="logs-container" id="logs-container">
+                                    <div class="log-entry success">
+                                        <span class="log-time">14:32:15</span>
+                                        <span class="log-type">SUCCESS</span>
+                                        <span class="log-message">Pedido #1001 enviado com sucesso</span>
+                                    </div>
+                                    <div class="log-entry success">
+                                        <span class="log-time">14:30:42</span>
+                                        <span class="log-type">SUCCESS</span>
+                                        <span class="log-message">Status do pedido #1000 atualizado</span>
+                                    </div>
+                                    <div class="log-entry warning">
+                                        <span class="log-time">14:28:33</span>
+                                        <span class="log-type">WARNING</span>
+                                        <span class="log-message">Timeout na requisição, tentando novamente...</span>
+                                    </div>
+                                    <div class="log-entry success">
+                                        <span class="log-time">14:28:35</span>
+                                        <span class="log-type">SUCCESS</span>
+                                        <span class="log-message">Requisição bem-sucedida após retry</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Pagamentos -->
+                    <div class="tab-content" id="tab-pagamento">
+                        <div class="config-section">
+                            <h3>Formas de Pagamento</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <h4>Dinheiro</h4>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="pagamento-dinheiro" checked>
+                                            <label for="pagamento-dinheiro"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" id="dinheiro-troco" checked>
+                                            <span>Aceitar troco</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <h4>PIX</h4>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="pagamento-pix" checked>
+                                            <label for="pagamento-pix"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pix-chave">Chave PIX</label>
+                                        <input type="text" id="pix-chave" value="12.345.678/0001-90">
+                                    </div>
+                                </div>
+
+                                <div class="payment-method">
+                                    <div class="method-header">
+                                        <h4>Cartão de Crédito/Débito</h4>
+                                        <div class="method-toggle">
+                                            <input type="checkbox" id="pagamento-cartao" checked>
+                                            <label for="pagamento-cartao"></label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cartao-taxa">Taxa de Processamento (%)</label>
+                                        <input type="number" id="cartao-taxa" value="3.5" step="0.1" min="0" max="10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Gateway de Pagamento</h3>
+                            <div class="form-group">
+                                <label for="gateway-provider">Provedor</label>
+                                <select id="gateway-provider">
+                                    <option value="">Selecione um provedor</option>
+                                    <option value="mercadopago">Mercado Pago</option>
+                                    <option value="pagseguro">PagSeguro</option>
+                                    <option value="stripe">Stripe</option>
+                                    <option value="paypal">PayPal</option>
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gateway-public-key">Chave Pública</label>
+                                    <input type="text" id="gateway-public-key" placeholder="Chave pública do gateway">
+                                </div>
+                                <div class="form-group">
+                                    <label for="gateway-secret-key">Chave Secreta</label>
+                                    <input type="password" id="gateway-secret-key" placeholder="Chave secreta do gateway">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="gateway-sandbox">
+                                    <span>Modo Sandbox (Teste)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Entrega -->
+                    <div class="tab-content" id="tab-entrega">
+                        <div class="config-section">
+                            <h3>Configurações de Entrega</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="entrega-tempo-padrao">Tempo Padrão (minutos)</label>
+                                    <input type="number" id="entrega-tempo-padrao" value="45" min="15" max="120">
+                                </div>
+                                <div class="form-group">
+                                    <label for="entrega-taxa">Taxa de Entrega (R$)</label>
+                                    <input type="number" id="entrega-taxa" value="5.00" step="0.50" min="0">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="entrega-valor-minimo">Valor Mínimo para Entrega (R$)</label>
+                                    <input type="number" id="entrega-valor-minimo" value="25.00" step="0.50" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="entrega-gratis-acima">Entrega Grátis Acima de (R$)</label>
+                                    <input type="number" id="entrega-gratis-acima" value="50.00" step="0.50" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Áreas de Entrega</h3>
+                            <div class="delivery-areas">
+                                <div class="area-item">
+                                    <div class="area-header">
+                                        <h4>Centro</h4>
+                                        <div class="area-actions">
+                                            <button type="button" class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn-action delete"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="area-details">
+                                        <p><strong>CEPs:</strong> 01000-000 a 01999-999</p>
+                                        <p><strong>Taxa:</strong> R$ 5,00</p>
+                                        <p><strong>Tempo:</strong> 30-45 min</p>
+                                    </div>
+                                </div>
+                                <div class="area-item">
+                                    <div class="area-header">
+                                        <h4>Zona Norte</h4>
+                                        <div class="area-actions">
+                                            <button type="button" class="btn-action edit"><i class="fas fa-edit"></i></button>
+                                            <button type="button" class="btn-action delete"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="area-details">
+                                        <p><strong>CEPs:</strong> 02000-000 a 02999-999</p>
+                                        <p><strong>Taxa:</strong> R$ 7,00</p>
+                                        <p><strong>Tempo:</strong> 45-60 min</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-primary" id="btn-nova-area">
+                                <i class="fas fa-plus"></i> Nova Área
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Aba Notificações -->
+                    <div class="tab-content" id="tab-notificacoes">
+                        <div class="config-section">
+                            <h3>WhatsApp Business</h3>
+                            <div class="form-group">
+                                <label for="whatsapp-token">Token da API</label>
+                                <input type="password" id="whatsapp-token" placeholder="Token do WhatsApp Business API">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp-numero">Número do WhatsApp</label>
+                                <input type="tel" id="whatsapp-numero" placeholder="+5511999999999">
+                            </div>
+                            <div class="notification-types">
+                                <h4>Tipos de Notificação</h4>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="whatsapp-novo-pedido" checked>
+                                    <span>Novo pedido recebido</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="whatsapp-status-pedido" checked>
+                                    <span>Mudança de status do pedido</span>
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="whatsapp-pedido-entregue">
+                                    <span>Pedido entregue</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Email</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email-smtp-host">Servidor SMTP</label>
+                                    <input type="text" id="email-smtp-host" placeholder="smtp.gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-smtp-port">Porta</label>
+                                    <input type="number" id="email-smtp-port" value="587">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="email-usuario">Usuário</label>
+                                    <input type="email" id="email-usuario" placeholder="seu-email@gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-senha">Senha</label>
+                                    <input type="password" id="email-senha" placeholder="Senha do email">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="email-ssl" checked>
+                                    <span>Usar SSL/TLS</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aba Segurança -->
+                    <div class="tab-content" id="tab-seguranca">
+                        <div class="config-section">
+                            <h3>Autenticação</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="session-timeout">Timeout de Sessão (minutos)</label>
+                                    <input type="number" id="session-timeout" value="60" min="5" max="480">
+                                </div>
+                                <div class="form-group">
+                                    <label for="max-login-attempts">Máximo de Tentativas de Login</label>
+                                    <input type="number" id="max-login-attempts" value="5" min="3" max="10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="force-https" checked>
+                                    <span>Forçar HTTPS</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="two-factor-auth">
+                                    <span>Autenticação de Dois Fatores (2FA)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="config-section">
+                            <h3>Backup e Logs</h3>
+                            <div class="form-group">
+                                <label for="backup-frequency">Frequência de Backup</label>
+                                <select id="backup-frequency">
+                                    <option value="daily">Diário</option>
+                                    <option value="weekly">Semanal</option>
+                                    <option value="monthly">Mensal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="log-retention">Retenção de Logs (dias)</label>
+                                <input type="number" id="log-retention" value="30" min="7" max="365">
+                            </div>
+                            <div class="backup-actions">
+                                <button type="button" class="btn-secondary" id="btn-backup-manual">
+                                    <i class="fas fa-download"></i> Backup Manual
+                                </button>
+                                <button type="button" class="btn-secondary" id="btn-restore-backup">
+                                    <i class="fas fa-upload"></i> Restaurar Backup
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nova Área de Entrega -->
+    <div class="modal" id="modal-nova-area">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nova Área de Entrega</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-nova-area">
+                    <div class="form-group">
+                        <label for="area-nome">Nome da Área</label>
+                        <input type="text" id="area-nome" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="area-cep-inicio">CEP Inicial</label>
+                            <input type="text" id="area-cep-inicio" placeholder="00000-000" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="area-cep-fim">CEP Final</label>
+                            <input type="text" id="area-cep-fim" placeholder="99999-999" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="area-taxa">Taxa de Entrega (R$)</label>
+                            <input type="number" id="area-taxa" step="0.50" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="area-tempo">Tempo de Entrega (min)</label>
+                            <input type="number" id="area-tempo" min="15" max="120" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cancelar-area">Cancelar</button>
+                <button type="submit" class="btn-primary" id="btn-salvar-area">Salvar Área</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/n8n-integration.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/configuracoes.js"></script>
+</body>
+</html>
+

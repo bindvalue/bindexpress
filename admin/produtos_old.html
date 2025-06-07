@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos - BindExpress Admin</title>
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-page">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Bind<span>Express</span></h2>
+                <p>Painel Administrativo</p>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
+                    <li class="active"><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="admin-header">
+                <div class="toggle-sidebar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar produtos...">
+                </div>
+                <div class="header-actions">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="../img/user-avatar.jpg" alt="Avatar do Usuário">
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Produtos Page -->
+            <div class="produtos-page">
+                <div class="page-header">
+                    <h1 class="page-title">Gerenciar Produtos</h1>
+                    <button class="btn-primary" id="btn-novo-produto">
+                        <i class="fas fa-plus"></i> Novo Produto
+                    </button>
+                </div>
+
+                <!-- Filtros e Ações -->
+                <div class="filters-actions">
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Categoria</label>
+                            <select id="filtro-categoria">
+                                <option value="">Todas</option>
+                                <option value="pizza">Pizzas</option>
+                                <option value="bebida">Bebidas</option>
+                                <option value="sobremesa">Sobremesas</option>
+                                <option value="entrada">Entradas</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Status</label>
+                            <select id="filtro-status">
+                                <option value="">Todos</option>
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label>Preço</label>
+                            <select id="filtro-preco">
+                                <option value="">Todos</option>
+                                <option value="0-30">R$ 0 - R$ 30</option>
+                                <option value="30-60">R$ 30 - R$ 60</option>
+                                <option value="60+">Acima de R$ 60</option>
+                            </select>
+                        </div>
+                        <button class="btn-filter">Filtrar</button>
+                        <button class="btn-clear-filter">Limpar</button>
+                    </div>
+                    <div class="actions">
+                        <button class="btn-action-export" id="btn-exportar-produtos">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                        <button class="btn-action-export" id="btn-importar-produtos">
+                            <i class="fas fa-upload"></i> Importar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Abas de Categoria -->
+                <div class="category-tabs">
+                    <button class="tab-btn active" data-category="todos">Todos (48)</button>
+                    <button class="tab-btn" data-category="pizza">Pizzas (25)</button>
+                    <button class="tab-btn" data-category="bebida">Bebidas (12)</button>
+                    <button class="tab-btn" data-category="sobremesa">Sobremesas (8)</button>
+                    <button class="tab-btn" data-category="entrada">Entradas (3)</button>
+                </div>
+
+                <!-- Tabela de Produtos -->
+                <div class="table-container">
+                    <div class="table-responsive">
+                        <table class="table produtos-table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" id="select-all-produtos">
+                                    </th>
+                                    <th>Imagem</th>
+                                    <th>Nome</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Status</th>
+                                    <th>Estoque</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="select-produto"></td>
+                                    <td>
+                                        <div class="produto-img">
+                                            <img src="img/pizza-calabresa.jpg" alt="Pizza Calabresa">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="produto-info">
+                                            <h4>Pizza Calabresa</h4>
+                                            <p>Molho de tomate, mussarela, calabresa e cebola</p>
+                                        </div>
+                                    </td>
+                                    <td><span class="categoria-badge pizza">Pizza</span></td>
+                                    <td class="preco">R$ 45,90</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td class="estoque">Em estoque</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action copy" title="Duplicar"><i class="fas fa-copy"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-produto">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-produto"></td>
+                                    <td>
+                                        <div class="produto-img">
+                                            <img src="img/pizza-margherita.jpg" alt="Pizza Margherita">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="produto-info">
+                                            <h4>Pizza Margherita</h4>
+                                            <p>Molho de tomate, mussarela, manjericão e tomate</p>
+                                        </div>
+                                    </td>
+                                    <td><span class="categoria-badge pizza">Pizza</span></td>
+                                    <td class="preco">R$ 42,90</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td class="estoque">Em estoque</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action copy" title="Duplicar"><i class="fas fa-copy"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-produto">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-produto"></td>
+                                    <td>
+                                        <div class="produto-img">
+                                            <img src="img/pizza-4queijos.jpg" alt="Pizza 4 Queijos">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="produto-info">
+                                            <h4>Pizza 4 Queijos</h4>
+                                            <p>Molho de tomate, mussarela, parmesão, gorgonzola e provolone</p>
+                                        </div>
+                                    </td>
+                                    <td><span class="categoria-badge pizza">Pizza</span></td>
+                                    <td class="preco">R$ 52,90</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td class="estoque">Em estoque</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action copy" title="Duplicar"><i class="fas fa-copy"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-produto">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-produto"></td>
+                                    <td>
+                                        <div class="produto-img">
+                                            <img src="img/coca-cola.jpg" alt="Coca-Cola 2L">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="produto-info">
+                                            <h4>Coca-Cola 2L</h4>
+                                            <p>Refrigerante de cola gelado</p>
+                                        </div>
+                                    </td>
+                                    <td><span class="categoria-badge bebida">Bebida</span></td>
+                                    <td class="preco">R$ 12,00</td>
+                                    <td><span class="status-badge ativo">Ativo</span></td>
+                                    <td class="estoque">Em estoque</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action copy" title="Duplicar"><i class="fas fa-copy"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-toggle" data-status="inativo">Desativar</a>
+                                                    <a href="#" class="delete-produto">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="select-produto"></td>
+                                    <td>
+                                        <div class="produto-img">
+                                            <img src="img/pudim.jpg" alt="Pudim de Leite">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="produto-info">
+                                            <h4>Pudim de Leite</h4>
+                                            <p>Pudim caseiro com calda de caramelo</p>
+                                        </div>
+                                    </td>
+                                    <td><span class="categoria-badge sobremesa">Sobremesa</span></td>
+                                    <td class="preco">R$ 8,50</td>
+                                    <td><span class="status-badge inativo">Inativo</span></td>
+                                    <td class="estoque">Sem estoque</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="btn-action view" title="Visualizar"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action edit" title="Editar"><i class="fas fa-edit"></i></button>
+                                            <button class="btn-action copy" title="Duplicar"><i class="fas fa-copy"></i></button>
+                                            <div class="dropdown">
+                                                <button class="btn-action more" title="Mais opções"><i class="fas fa-ellipsis-v"></i></button>
+                                                <div class="dropdown-menu">
+                                                    <a href="#" class="status-toggle" data-status="ativo">Ativar</a>
+                                                    <a href="#" class="delete-produto">Excluir</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Paginação -->
+                <div class="pagination">
+                    <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <span class="page-dots">...</span>
+                    <button class="page-btn">10</button>
+                    <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Produto -->
+    <div class="modal" id="modal-produto">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-produto-titulo">Novo Produto</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="form-produto">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="produto-nome">Nome do Produto *</label>
+                            <input type="text" id="produto-nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="produto-categoria">Categoria *</label>
+                            <select id="produto-categoria" name="categoria" required>
+                                <option value="">Selecione uma categoria</option>
+                                <option value="pizza">Pizza</option>
+                                <option value="bebida">Bebida</option>
+                                <option value="sobremesa">Sobremesa</option>
+                                <option value="entrada">Entrada</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="produto-descricao">Descrição</label>
+                        <textarea id="produto-descricao" name="descricao" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="produto-preco">Preço *</label>
+                            <input type="number" id="produto-preco" name="preco" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="produto-status">Status</label>
+                            <select id="produto-status" name="status">
+                                <option value="ativo">Ativo</option>
+                                <option value="inativo">Inativo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="produto-imagem">Imagem do Produto</label>
+                        <div class="file-upload">
+                            <input type="file" id="produto-imagem" name="imagem" accept="image/*">
+                            <div class="file-upload-preview">
+                                <img id="preview-imagem" src="" alt="Preview" style="display: none;">
+                                <div class="upload-placeholder">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Clique para selecionar uma imagem</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Opções de Tamanho</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tamanhos[]" value="pequena">
+                                <span>Pequena</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tamanhos[]" value="media" checked>
+                                <span>Média</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="tamanhos[]" value="grande">
+                                <span>Grande</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Adicionais Disponíveis</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="adicionais[]" value="borda-recheada">
+                                <span>Borda Recheada (+R$ 8,00)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="adicionais[]" value="extra-queijo">
+                                <span>Extra Queijo (+R$ 5,00)</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="adicionais[]" value="sem-cebola">
+                                <span>Sem Cebola</span>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="btn-cancelar-produto">Cancelar</button>
+                <button type="submit" class="btn-primary" id="btn-salvar-produto">Salvar Produto</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/n8n-integration.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/produtos.js"></script>
+</body>
+</html>
+

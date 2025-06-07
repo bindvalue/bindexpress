@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - PizzaExpress Admin</title>
+    <title>Dashboard - BindExpress Admin</title>
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,10 +24,10 @@
                 <ul>
                     <li class="active"><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                     <li><a href="pedidos.html"><i class="fas fa-shopping-bag"></i> Pedidos</a></li>
-                    <li><a href="#"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Clientes</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="produtos.html"><i class="fas fa-pizza-slice"></i> Produtos</a></li>
+                    <li><a href="clientes.html"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="relatorios.html"><i class="fas fa-chart-bar"></i> Relatórios</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
                 </ul>
             </nav>
             <div class="sidebar-footer">
@@ -174,7 +174,7 @@
                                     <td><span class="status-badge pending">Pendente</span></td>
                                     <td>
                                         <div class="table-actions">
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action print"><i class="fas fa-print"></i></button>
                                         </div>
                                     </td>
@@ -187,7 +187,7 @@
                                     <td><span class="status-badge processing">Em Preparo</span></td>
                                     <td>
                                         <div class="table-actions">
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action print"><i class="fas fa-print"></i></button>
                                         </div>
                                     </td>
@@ -200,7 +200,7 @@
                                     <td><span class="status-badge shipping">Em Entrega</span></td>
                                     <td>
                                         <div class="table-actions">
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action print"><i class="fas fa-print"></i></button>
                                         </div>
                                     </td>
@@ -213,7 +213,7 @@
                                     <td><span class="status-badge delivered">Entregue</span></td>
                                     <td>
                                         <div class="table-actions">
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action print"><i class="fas fa-print"></i></button>
                                         </div>
                                     </td>
@@ -226,7 +226,7 @@
                                     <td><span class="status-badge cancelled">Cancelado</span></td>
                                     <td>
                                         <div class="table-actions">
-                                            <button class="btn-action view"><i class="fas fa-eye"></i></button>
+                                            <button class="btn-action view" data-modal="modal-pedido"><i class="fas fa-eye"></i></button>
                                             <button class="btn-action print"><i class="fas fa-print"></i></button>
                                         </div>
                                     </td>
@@ -323,21 +323,21 @@
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon active"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-clock"></i></div>
                             <div class="timeline-content">
                                 <h5>Em Preparo</h5>
-                                <p>Aguardando</p>
+                                <p>Aguardando confirmação</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-truck"></i></div>
                             <div class="timeline-content">
                                 <h5>Em Entrega</h5>
                                 <p>Aguardando</p>
                             </div>
                         </div>
                         <div class="timeline-item">
-                            <div class="timeline-icon"><i class="fas fa-check"></i></div>
+                            <div class="timeline-icon pending"><i class="fas fa-check-circle"></i></div>
                             <div class="timeline-content">
                                 <h5>Entregue</h5>
                                 <p>Aguardando</p>
@@ -348,149 +348,74 @@
             </div>
             <div class="modal-footer">
                 <div class="status-actions">
-                    <select id="alterar-status">
-                        <option value="">Alterar Status</option>
-                        <option value="em-preparo">Em Preparo</option>
-                        <option value="em-entrega">Em Entrega</option>
-                        <option value="entregue">Entregue</option>
-                        <option value="cancelado">Cancelado</option>
-                    </select>
-                    <button id="btn-salvar-status" class="btn-primary">Salvar</button>
+                    <button class="btn-primary">Confirmar Preparo</button>
+                    <button class="btn-secondary">Cancelar Pedido</button>
                 </div>
-                <div>
-                    <button id="btn-fechar-modal" class="btn-secondary">Fechar</button>
-                    <button id="btn-imprimir-pedido" class="btn-primary">Imprimir</button>
-                </div>
+                <button class="btn-secondary close">Fechar</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal Impressão -->
-    <div class="modal" id="modal-impressao">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Imprimir Pedido #1001</h3>
-                <span class="close">&times;</span>
-            </div>
-            <div class="modal-body">
-                <div class="impressao-opcoes">
-                    <h4>Opções de Impressão</h4>
-                    <div class="opcoes-form">
-                        <div class="radio-group">
-                            <h5>Formato</h5>
-                            <label>
-                                <input type="radio" name="formato" value="comanda" checked> Comanda
-                            </label>
-                            <label>
-                                <input type="radio" name="formato" value="completo"> Completo
-                            </label>
-                        </div>
-                        <div class="radio-group">
-                            <h5>Tamanho</h5>
-                            <label>
-                                <input type="radio" name="tamanho" value="80mm" checked> 80mm
-                            </label>
-                            <label>
-                                <input type="radio" name="tamanho" value="a4"> A4
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <h5>Opções</h5>
-                            <label>
-                                <input type="checkbox" name="opcao" value="logo" checked> Incluir Logo
-                            </label>
-                            <label>
-                                <input type="checkbox" name="opcao" value="endereco" checked> Incluir Endereço
-                            </label>
-                            <label>
-                                <input type="checkbox" name="opcao" value="qrcode"> Incluir QR Code
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="impressao-preview">
-                    <h4>Pré-visualização</h4>
-                    <div class="preview-container">
-                        <div class="comanda-preview">
-                            <div class="comanda-header">
-                                <h3>PizzaExpress</h3>
-                                <p>Av. das Pizzas, 123 - Centro</p>
-                                <p>Tel: (11) 3456-7890</p>
-                            </div>
-                            <div class="comanda-info">
-                                <p>Pedido: #1001</p>
-                                <p>Data: 06/06/2025 19:30</p>
-                                <p>Cliente: João Silva</p>
-                                <p>Tel: (11) 98765-4321</p>
-                            </div>
-                            <div class="comanda-itens">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Item</th>
-                                            <th>Qtd</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Pizza Calabresa (M)</td>
-                                            <td>1</td>
-                                            <td>48,90</td>
-                                        </tr>
-                                        <tr>
-                                            <td>- Borda Recheada</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pizza Margherita (P)</td>
-                                            <td>1</td>
-                                            <td>36,70</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Refrigerante Cola 2L</td>
-                                            <td>1</td>
-                                            <td>12,00</td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="2">Subtotal:</td>
-                                            <td>97,60</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Taxa de Entrega:</td>
-                                            <td>5,00</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2">Desconto:</td>
-                                            <td>-26,70</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2"><strong>Total:</strong></td>
-                                            <td><strong>75,90</strong></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <div class="comanda-footer">
-                                <p>Forma de Pagamento: Cartão de Crédito</p>
-                                <p class="agradecimento">Obrigado pela preferência!</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button id="btn-cancelar-impressao" class="btn-secondary">Cancelar</button>
-                <button id="btn-confirmar-impressao" class="btn-primary">Imprimir</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../js/admin.js"></script>
+    <script>
+        // Inicializar gráficos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gráfico de Vendas
+            const vendasCtx = document.getElementById('vendasChart').getContext('2d');
+            new Chart(vendasCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                    datasets: [{
+                        label: 'Vendas',
+                        data: [12, 19, 3, 5, 2, 3, 9],
+                        borderColor: '#e67e22',
+                        backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // Gráfico de Produtos
+            const produtosCtx = document.getElementById('produtosChart').getContext('2d');
+            new Chart(produtosCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pizza Calabresa', 'Pizza Margherita', 'Pizza Portuguesa', 'Pizza 4 Queijos', 'Outros'],
+                    datasets: [{
+                        data: [30, 25, 20, 15, 10],
+                        backgroundColor: [
+                            '#e67e22',
+                            '#3498db',
+                            '#2ecc71',
+                            '#f39c12',
+                            '#95a5a6'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 

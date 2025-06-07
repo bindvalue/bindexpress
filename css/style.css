@@ -1,19 +1,174 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 
 /* Estilos Gerais */
+/* ===== SISTEMA DE VARIÁVEIS CSS - BINDEXPRESS ===== */
 :root {
-    --primary-color:#F25C05;
+    /* ===== CORES PRINCIPAIS ===== */
+    --primary-color: #F25C05;
+    --primary-hover: #d35400;
+    --primary-light: rgba(230, 126, 34, 0.1);
+    
     --secondary-color: #F2CB9B;
-    --dark-color: #333333;
-    --light-color: #f8f9fa;
-    --gray-color: #6c757d;
+    --secondary-hover: #e6b885;
+    
+    /* ===== CORES NEUTRAS ===== */
+    --white: #ffffff;
+    --black: #000000;
+    --transparent: transparent;
+    
+    /* ===== TONS DE CINZA ===== */
+    --gray-50: #f8f9fa;
+    --gray-100: #f5f5f5;
+    --gray-200: #e9ecef;
+    --gray-300: #ddd;
+    --gray-400: #bdc3c7;
+    --gray-500: #95a5a6;
+    --gray-600: #6c757d;
+    --gray-700: #666;
+    --gray-800: #333;
+    --gray-900: #2c3e50;
+    
+    /* ===== TONS DE CINZA HOVER ===== */
+    --gray-hover-light: #f9f9f9;
+    --gray-hover-medium: #e9ecef;
+    --gray-hover-dark: #7f8c8d;
+    
+    /* ===== CORES DE STATUS ===== */
     --success-color: #28a745;
-    --warning-color: #ffc107;
+    --success-light: #e8f5e8;
+    --success-alt: #27ae60;
+    --success-dark: #229954;
+    --success-bright: #4caf50;
+    
+    --warning-color: #F39C12;
+    --warning-light: #fff3e0;
+    --warning-alt: #ff9800;
+    --warning-pending: #f5a623;
+    
     --danger-color: #dc3545;
+    --danger-light: #ffebee;
+    --danger-alt: #e74c3c;
+    --danger-hover: #c0392b;
+    --danger-bright: #f44336;
+    
     --info-color: #17a2b8;
+    --info-light: #e3f2fd;
+    --info-alt: #3498db;
+    --info-hover: #2980b9;
+    --info-bright: #2196f3;
+    
+    /* ===== CORES ESPECÍFICAS DE BADGES ===== */
+    --badge-pizza-bg: #e8f5e8;
+    --badge-pizza-text: #27ae60;
+    
+    --badge-bebida-bg: #e3f2fd;
+    --badge-bebida-text: #2196f3;
+    
+    --badge-sobremesa-bg: #fce4ec;
+    --badge-sobremesa-text: #e91e63;
+    
+    --badge-entrada-bg: #fff3e0;
+    --badge-entrada-text: #ff9800;
+    
+    --badge-vip-bg: #f3e5f5;
+    --badge-vip-text: #9c27b0;
+    
+    /* ===== CORES DE SIDEBAR ===== */
+    --sidebar-bg-start: #2c3e50;
+    --sidebar-bg-end: #34495e;
+    --sidebar-text: #ecf0f1;
+    --sidebar-text-muted: #bdc3c7;
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+    --sidebar-hover: rgba(255, 255, 255, 0.1);
+    --sidebar-active: #e67e22;
+    --sidebar-active-border: #d35400;
+    
+    /* ===== CORES DE BOTÕES ===== */
+    --btn-primary-bg: #e67e22;
+    --btn-primary-hover: #d35400;
+    --btn-primary-text: var(--white);
+    
+    --btn-secondary-bg: #95a5a6;
+    --btn-secondary-hover: #7f8c8d;
+    --btn-secondary-text: var(--white);
+    
+    --btn-action-bg: #3498db;
+    --btn-action-hover: #2980b9;
+    --btn-action-text: var(--white);
+    --btn-action-generic-hover: #8f8f8f;
+    
+    --btn-filter-bg: #27ae60;
+    --btn-filter-hover: #229954;
+    --btn-filter-text: var(--white);
+    
+    --btn-clear-bg: #e74c3c;
+    --btn-clear-hover: #c0392b;
+    --btn-clear-text: var(--white);
+    
+    /* ===== CORES DE AÇÕES ESPECÍFICAS ===== */
+    --action-view: #3498db;
+    --action-edit: #f39c12;
+    --action-copy: #9b59b6;
+    --action-message: #1abc9c;
+    --action-more: #95a5a6;
+    --action-print: #4e7072;
+    --action-dropdown: #77989b;
+    
+    /* ===== CORES COM TRANSPARÊNCIA ===== */
+    --overlay-light: rgba(0, 0, 0, 0.1);
+    --overlay-medium: rgba(0, 0, 0, 0.15);
+    --overlay-dark: rgba(0, 0, 0, 0.3);
+    --overlay-modal: rgba(0, 0, 0, 0.5);
+    
+    --primary-alpha-10: rgba(230, 126, 34, 0.1);
+    --danger-alpha-10: rgba(226, 55, 68, 0.1);
+    --warning-alpha-10: rgba(245, 166, 35, 0.1);
+    --info-alpha-10: rgba(23, 162, 184, 0.1);
+    --success-alpha-10: rgba(40, 167, 69, 0.1);
+    --cancelled-alpha-10: rgba(220, 53, 69, 0.1);
+    --shipping-alpha-10: rgba(255, 193, 7, 0.1);
+    
+    /* ===== BORDAS ===== */
+    --border-light: #eee;
+    --border-medium: #ddd;
+    --border-dark: #e9ecef;
+    --border-table: #f1f3f4;
+    
+    /* ===== BACKGROUNDS ESPECÍFICOS ===== */
+    --bg-main: #f5f5f5;
+    --bg-card: var(--white);
+    --bg-header: var(--white);
+    --bg-table-header: #f8f9fa;
+    --bg-hover: #f8f9fa;
+    --bg-hover-alt: #f9f9f9;
+    
+    /* ===== GRADIENTES ===== */
+    --gradient-sidebar: linear-gradient(180deg, var(--sidebar-bg-start) 0%, var(--sidebar-bg-end) 100%);
+    --gradient-primary: linear-gradient(135deg, #e67e22, #f39c12);
+    --gradient-info: linear-gradient(135deg, #3498db, #2980b9);
+    
+    /* ===== OUTRAS PROPRIEDADES ===== */
     --border-radius: 4px;
-    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius-large: 8px;
+    --border-radius-xl: 12px;
+    --border-radius-round: 50%;
+    --border-radius-pill: 25px;
+    
+    --box-shadow: 0 2px 10px var(--overlay-light);
+    --box-shadow-hover: 0 4px 12px var(--overlay-medium);
+    --box-shadow-modal: 0 10px 30px var(--overlay-dark);
+    
     --transition: all 0.3s ease;
+    --transition-fast: all 0.2s ease;
+    --transition-slow: all 0.4s ease;
+    
+    /* ===== CORES DE TEXTO ===== */
+    --text-primary: var(--gray-800);
+    --text-secondary: var(--gray-700);
+    --text-muted: var(--gray-600);
+    --text-light: var(--gray-500);
+    --text-white: var(--white);
+    --text-dark: var(--gray-900);
 }
 
 * {
@@ -516,7 +671,7 @@ img {
 
 /* Footer */
 .footer {
-    background-color: var(--dark-color);
+    background-color: var(--gray-900);
     color: white;
     padding: 60px 0 20px;
 }
