@@ -556,7 +556,7 @@ body {
     gap: 8px;
     text-decoration: none;
     color: var(--white); /* ou a cor que estiver usando no restante do sistema */
-    background-color:var(--warning-color); /* opcional, só se quiser destacar o botão */
+    background-color:var(--action-view); /* opcional, só se quiser destacar o botão */
 }
 
 .btn-action:hover {
