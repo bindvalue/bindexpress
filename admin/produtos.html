@@ -560,13 +560,13 @@
         // Timeout de segurança
         setTimeout(() => {
             if (!window.produtosManager) {
-                console.error('ProdutosManager não carregou! Verifique o arquivo produtos-corrigido.js');
+                console.error('ProdutosManager não carregou! Verifique o arquivo produtos.js');
                 document.getElementById('produtos-tbody').innerHTML = `
                     <tr>
                         <td colspan="8" style="text-align: center; padding: 40px; color: #dc3545;">
                             <i class="fas fa-exclamation-triangle" style="font-size: 24px; margin-bottom: 10px;"></i>
                             <p>Erro ao carregar o sistema de produtos.</p>
-                            <small>Verifique se o arquivo produtos-corrigido.js está carregando corretamente.</small>
+                            <small>Verifique se o arquivo produtos.js está carregando corretamente.</small>
                         </td>
                     </tr>
                 `;
